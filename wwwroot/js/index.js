@@ -1,19 +1,38 @@
 ﻿$(document).ready(function () {
     $('#book').click(function () {
-        $('#page-content-wrapper').load('book.html');
+
+        $('#page-wrapper').load('book.html');
+
+        //var items = $('#page-content > #sidenav nav ul li a');
+
+        //var activeItems = items.$('.active');
+
+        //activeItems.each(function () {
+        //    var current = $(this);
+        //    current.removeClass('active');
+        //})
+
+        //$('#page-content #sidenav nav ul li a .nav-link').removeClass("active");
+        //$('#page-content #sidenav nav ul li a .nav-link').addClass("na");
+
+        //$(this).addClass("active");
+        //$(this).removeClass("na");
+        
     })
 
     $('#index').click(function () {
-        $('#page-content-wrapper').load('indexPanel.html');
+        $('#page-wrapper').load('indexPanel.html');
         
     })
 
     $('#cancelbooking').click(function () {
-        $('#page-content-wrapper').load('cancelbooking.html');
+        $('#page-wrapper').load('cancelbooking.html');
+
+        //$('#page-content #sidenav nav ul li a .nav-link').removeClass("active");
+        //$('#page-content #sidenav nav ul li a .nav-link').addClass("na");
+
+        //$(this).addClass("active");
+        //$(this).removeClass("na");
     })
  
-});
-
-$(document).ready(function GetUserName() {
-    document.getElementById("welcomeMsg").innerHTML = "Welcome, user"; // Will get actual username later on.
 });

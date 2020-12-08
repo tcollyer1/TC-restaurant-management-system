@@ -1,20 +1,113 @@
-﻿h2 {
-    color: black;
+﻿html {
+    height: 100%
+}
+
+body {
+    /*background-color: powderblue;*/
+    height: 100%;
+    min-height: 100%;
+    background-image: url("https://hdwallpaperim.com/wp-content/uploads/2017/09/17/62556-restaurant-cafes-urban-city.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: rgba(255, 255, 255, 0.4);
+    background-blend-mode: overlay;
+}
+
+h2 {
+    color: white;
+    text-shadow: 1px 1px 2px #000000;
     font-size: 72px;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI Light';
+    text-align: center;
+    font-weight: bold;
+}
+
+h3 {
+    color: black;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 40px;
 }
 
 p {
-    color: dimgrey;
+    color: black;
     font-size: 16px;
-    font-family: 'Segoe UI';
+    font-family: 'Segoe UI Light';
+    text-align: center;
 }
 
 
 #description {
     font-size: 32px;
-    color: cornflowerblue;
+    color: black;
+    /*text-shadow: 1px 1px 1px #000000;*/
+    text-align: center;
+    font-weight: normal;
 }
+
+.navbar-custom {
+    background-color: #4593a3;
+}
+
+#page-wrapper {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+    padding: 0px;
+    margin-top: 55px;
+}
+
+#page-content {
+    width: 100%;
+    height: 100%;
+}
+
+#topnav {
+}
+
+#sidenav {
+    width: 200px;
+    height: 100%;
+    position: fixed;
+    margin: 0;
+    padding: 0;
+}
+
+#sidenav a:hover {
+    background-color: #53b5c9;
+    color: white;
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-top: 50px;
+}
+
+#search {
+    width: 130px;
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
+}
+
+#search:focus {
+    width: 50%;
+}
+
+#customer-info {
+    width: 50%;
+    text-align: center;
+    display: block;
+}
+
+.white-bg {
+    background-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    background-blend-mode: overlay;
+}
+
+
 
 
 

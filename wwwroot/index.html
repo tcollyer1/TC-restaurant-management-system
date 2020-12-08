@@ -19,32 +19,60 @@
 </head>
 <body>
     <!-- Top bar -->
-    <nav class="navbar navbar-dark bg-dark navbar-expand-md">
-        <div class="navbar-header">
-            <a id="logo" class="navbar-brand" href="#">Restaurant Management System</a>
-        </div>
-        <ul class="navbar-nav">
-            <li class="nav-item"><a class="nav-link" href="#" id="index">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Log out</a></li>
-        </ul>
-    </nav>
-
-    <!-- Side bar -->
-    <div class="container row">
-        <nav class="navbar navbar-dark bg-dark">
-            <ul class="navbar-nav flex-column">
-                <li class="nav-item"><a class="nav-link" href="#" id="book">Book a customer</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" id="viewbookings">View current bookings</a></li>
-                <li class="nav-item"><a class="nav-link" href="#" id="cancelbooking">Cancel a booking</a></li>
+    <div id="topnav">
+        <nav class="navbar navbar-dark navbar-custom navbar-expand-md fixed-top">
+            <div class="navbar-header">
+                <a id="logo" class="navbar-brand" href="#">Restaurant Management System</a>
+            </div>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="#" id="index">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#">Log out</a></li>
             </ul>
         </nav>
+    </div>
+    
 
-        <div id="page-content-wrapper" class="col-9 pl-5 mt-20">
-            <h2 id="welcomeMsg" onload="GetUserName()"></h2>
-            <p id="description">Please select an option.</p>
+    <!-- Side bar -->
+    <div id="page-content">
+
+        <div id="sidenav">
+            <nav class="navbar navbar-dark navbar-custom">
+                <ul class="navbar-nav flex-column">
+                    <li class="nav-item"><a class="nav-link" href="#" id="book">Book a customer</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="viewbookings">View current bookings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="cancelbooking">Cancel a booking</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="tables">Add/remove table</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="openingtimes">Set opening times</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+
+        <div id="page-wrapper" class="white-bg">
+            <!--<h2 id="welcomeMsg" onload="GetUserName()"></h2>-->
+            <h2>Welcome</h2>
+            <p id="description">Select an option on the left.</p>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <h3>Manage your bookings</h3>
+                    <p>With booking and cancellation features, you can make and cancel bookings as you need to.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>View bookings</h3>
+                    <p>You can choose to view all bookings made on the system and search for specific bookings.</p>
+                </div>
+                <div class="col-md-4">
+                    <h3>Manage tables</h3>
+                    <p>With owner access, tables can be added, removed and can be allocated seats.</p>
+                </div>
+            </div>
+            
         </div>
 
     </div>
-        
+
+    
+
 </body>
 </html>
