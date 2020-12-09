@@ -3,36 +3,30 @@
 
         $('#page-wrapper').load('book.html');
 
-        //var items = $('#page-content > #sidenav nav ul li a');
-
-        //var activeItems = items.$('.active');
-
-        //activeItems.each(function () {
-        //    var current = $(this);
-        //    current.removeClass('active');
-        //})
-
-        //$('#page-content #sidenav nav ul li a .nav-link').removeClass("active");
-        //$('#page-content #sidenav nav ul li a .nav-link').addClass("na");
-
-        //$(this).addClass("active");
-        //$(this).removeClass("na");
+        UpdateActive('#book');
         
     })
 
     $('#index').click(function () {
         $('#page-wrapper').load('indexPanel.html');
-        
+
+        UpdateActive('#index');
+
     })
 
     $('#cancelbooking').click(function () {
         $('#page-wrapper').load('cancelbooking.html');
 
-        //$('#page-content #sidenav nav ul li a .nav-link').removeClass("active");
-        //$('#page-content #sidenav nav ul li a .nav-link').addClass("na");
-
-        //$(this).addClass("active");
-        //$(this).removeClass("na");
+        UpdateActive('#cancelbooking');
     })
  
 });
+
+function UpdateActive(item) // changes active page
+{ 
+    var items = $('.active');
+
+    items.removeClass("active");
+
+    $(item).addClass("active");
+}

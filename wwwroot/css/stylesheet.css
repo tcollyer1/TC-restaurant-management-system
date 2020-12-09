@@ -3,35 +3,32 @@
 }
 
 body {
-    /*background-color: powderblue;*/
     height: 100%;
     min-height: 100%;
     background-image: url("https://hdwallpaperim.com/wp-content/uploads/2017/09/17/62556-restaurant-cafes-urban-city.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: rgba(255, 255, 255, 0.4);
-    background-blend-mode: overlay;
 }
 
 h2 {
     color: white;
     text-shadow: 1px 1px 2px #000000;
     font-size: 72px;
-    font-family: 'Segoe UI Light';
+    font-family: 'Segoe UI';
     text-align: center;
     font-weight: bold;
 }
 
 h3 {
-    color: black;
+    color: white;
     font-size: 40px;
     text-align: center;
     padding-top: 40px;
 }
 
 p {
-    color: black;
+    color: white;
     font-size: 16px;
     font-family: 'Segoe UI Light';
     text-align: center;
@@ -40,14 +37,13 @@ p {
 
 #description {
     font-size: 32px;
-    color: black;
-    /*text-shadow: 1px 1px 1px #000000;*/
+    color: white;
     text-align: center;
     font-weight: normal;
 }
 
 .navbar-custom {
-    background-color: #4593a3;
+    background-color: #fc8c03;
 }
 
 #page-wrapper {
@@ -63,9 +59,6 @@ p {
     height: 100%;
 }
 
-#topnav {
-}
-
 #sidenav {
     width: 200px;
     height: 100%;
@@ -74,8 +67,8 @@ p {
     padding: 0;
 }
 
-#sidenav a:hover {
-    background-color: #53b5c9;
+#sidenav a:hover, #topnav .nav-link:hover {
+    background-color: #f7a745;
     color: white;
 }
 
@@ -83,6 +76,10 @@ p {
     margin-left: 0px;
     margin-right: 0px;
     margin-top: 50px;
+}
+
+.active {
+    background-color: #cf7100;
 }
 
 #search {
@@ -103,8 +100,11 @@ p {
 
 .white-bg {
     background-color: white;
-    background-color: rgba(255, 255, 255, 0.3);
-    background-blend-mode: overlay;
+    background-color: rgba(42, 42, 42, 0.5);
+}
+
+label {
+    color: white;
 }
 
 
