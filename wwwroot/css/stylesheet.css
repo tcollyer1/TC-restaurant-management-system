@@ -11,6 +11,32 @@ body {
     background-size: cover;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    height: 80px;
+    line-height: 80px;
+    background-color: rgba(255, 127, 0, 0.5);
+}
+
+    .footer a {
+        color: #ed7439;
+        -webkit-transition: color 0.5s;
+        transition: color 0.5s;
+    }
+
+    .footer a:hover {
+        color: white;
+    }
+
+.bottom-padding {
+    padding-bottom: 100px;
+}
+
 h2 {
     color: white;
     text-shadow: 1px 1px 2px #000000;
@@ -82,24 +108,42 @@ p {
     background-color: #cf7100;
 }
 
-#search {
+.search-field {
     width: 130px;
     -webkit-transition: width 0.2s ease-in-out;
     transition: width 0.2s ease-in-out;
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
+    padding: 8px;
+    outline: none;
 }
 
-#search:focus {
+.search-field:focus {
     width: 50%;
+}
+
+#cancellation-search {
+    text-align: center;
+    width: 100%;
+}
+
+.search-button {
+    border: none;
+    background-color: #fc8c03;
+    color: white;
+    padding: 8px;
+    border-radius: 15px;
+    border: none;
 }
 
 #customer-info {
-    width: 50%;
+    width: 100%;
     text-align: center;
     display: block;
 }
 
-.white-bg {
-    background-color: white;
+.transparent-bg {
     background-color: rgba(42, 42, 42, 0.5);
 }
 
