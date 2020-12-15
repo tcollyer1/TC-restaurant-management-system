@@ -45,10 +45,6 @@
 
 function UpdateActive(item) // changes active page
 { 
-    //var items = $('.active');
-
-    //items.removeClass("active");
-
     $(item).addClass("active");
 }
 

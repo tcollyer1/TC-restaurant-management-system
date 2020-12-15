@@ -1,24 +1,34 @@
-﻿<div id="book">
+﻿<script src="js/retrieveInfo.js"></script>
+
+<div id="book">
     <h2>Book a customer</h2>
     <p id="description">Enter booking details:</p>  
 </div>
 
 <div id="customer-info">
 
-    <form id="customerdetails">
-        <label for="numSeats">Number of seats: </label><br />
-        <input type="number" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
+    <form id="customerdetails" class="row">
 
-        <label for="firstName">First name: </label><br />
-        <input type="text" id="firstName" name="firstName" placeholder="John" /><br /><br />
+        <div class="col-md-6 form-group">
+            <label for="firstName">First name: </label><br />
+            <input type="text" id="firstName" name="firstName" placeholder="First name" /><br /><br />
 
-        <label for="lastName">Last name:</label><br />
-        <input type="text" id="lastName" name="lastName" placeholder="Smith" /><br /><br />
+            <label for="lastName">Last name:</label><br />
+            <input type="text" id="lastName" name="lastName" placeholder="Last name" /><br /><br />
+        </div>
+        
+        <div class="col-md-6 form-group">
+            <label for="numSeats">Number of seats: </label><br />
+            <input type="number" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
 
-        <label for="phone">Phone No.:</label><br />
-        <input type="text" id="phone" name="phone" placeholder="01234567890" /><br /><br />
-
-        <input type="submit" value="Continue" />
+            <label for="phone">Phone No.:</label><br />
+            <input type="text" id="phone" name="phone" placeholder="Phone number" /><br /><br />
+        </div>
+        
+        <div class="col-md-12">
+            <input id="bookingSubmit" class="search-button" type="submit" value="Continue" />
+        </div>
+        
     </form>
 
 </div>
