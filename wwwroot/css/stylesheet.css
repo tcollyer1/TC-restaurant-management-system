@@ -9,33 +9,32 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
 }
 
 .footer {
-    margin-bottom: 0px;
+    margin-bottom: 0;
     width: 100%;
-    font-size: 24px;
+    font-size: 18px;
     text-align: center;
     color: white;
-    height: 80px;
-    line-height: 80px;
+    height: 60px;
+    line-height: 60px;
     background-color: #fc8c03;
-    overflow: hidden;
+
+    position: fixed;
+    bottom: 0;
 }
 
     .footer a {
-        color: purple;
+        color: white;
         -webkit-transition: color 0.5s;
         transition: color 0.5s;
     }
 
-    .footer a:hover {
-        color: white;
-    }
-
-.bottom-padding {
-    padding-bottom: 200px;
-}
+        .footer a:hover {
+            color: #b33e00;
+        }
 
 h2 {
     color: white;
@@ -44,6 +43,7 @@ h2 {
     font-family: 'Segoe UI';
     text-align: center;
     font-weight: bold;
+    margin-top: 50px;
 }
 
 h3 {
@@ -69,54 +69,82 @@ p {
 }
 
 .navbar-custom {
-    background-color: #fc8c03;
+    background-color: #fc8c03;    
+}
+
+.sidenav-rounded {
+    border-radius: 0px 0px 50px 0px;
 }
 
 #page-wrapper {
     width: 70%;
     height: 100%;
     margin: 0 auto;
-    padding: 0px;
     margin-top: 55px;
+    /*position: relative;*/
+    overflow: scroll;
+    margin-bottom: 100px;
+    padding-bottom: 10px;
 }
 
 #page-content {
     width: 100%;
     height: 100%;
+    margin-bottom: 60px;
+    padding-bottom: 60px;
+}
+
+.nav-container {
+    width: 200px;
+    height: 200px;
+    position: fixed;
 }
 
 #sidenav {
-    width: 200px;
-    height: 100%;
+    transform: translateX(-100%);
+    transition: 0.3s;
+    /*width: 200px;*/
     position: fixed;
     margin: 0;
     padding: 0;
 }
 
+    .nav-container:hover #sidenav {
+        width: 200px;
+        transform: translateX(0);
+    }
+
 #sidenav a:hover, #topnav .nav-link:hover {
     background-color: #f7a745;
     color: white;
+    border-radius: 25px;
+    width: 105%;
 }
 
-.row {
-    margin-left: 0px;
-    margin-right: 0px;
+/*.row {
+    margin-left: 20px;
+    margin-right: 20px;
     margin-top: 50px;
+}*/
+
+nav ul li {
+    text-align: center;
 }
 
 .active {
     background-color: #cf7100;
+    border-radius: 25px;
 }
 
 .search-field {
     width: 130px;
-    -webkit-transition: width 0.2s ease-in-out;
-    transition: width 0.2s ease-in-out;
     padding: 8px;
     border-radius: 15px;
     border: none;
     padding: 8px;
     outline: none;
+    -webkit-transition: width 0.2s ease-in-out;
+    transition: width 0.2s ease-in-out;
 }
 
 .search-field:focus {
@@ -137,6 +165,10 @@ p {
     border: none;
 }
 
+    .search-button:hover {
+        background-color: #ffb459;
+    }
+
 #customer-info {
     width: 100%;
     text-align: center;
@@ -145,6 +177,34 @@ p {
 
 .transparent-bg {
     background-color: rgba(42, 42, 42, 0.5);
+}
+
+.bottom-margin {
+    margin-bottom: 100px;
+}
+
+.bottom-padding {
+    padding-bottom: 20px;
+}
+
+table {
+    margin: 0 auto;
+    color: black;
+    border-collapse: collapse;
+    padding-bottom: 300px;
+    width: 50%;
+    /*background-color: rgba(255, 255, 255, 0.2);*/
+    background-color: white;
+}
+
+    table td {
+        border: 2px solid orange;
+    }
+
+#bookingslist {
+    margin: 0 auto;
+    height: 100%;
+    width: 100%;
 }
 
 label {

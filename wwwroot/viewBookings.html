@@ -1,13 +1,20 @@
-﻿<div id="viewbookings">
+﻿<script src="js/retrieveAllBookings.js"></script>
+
+<div id="viewbookings">
     <h2>View bookings</h2>
     <p id="description">View recent bookings made or search for one.</p>
     
 </div>
 
-<div class="container">
+<div class="container bottom-padding">
     <form id="viewbooking-searchform">
         <input class="search-field" type="text" name="search" placeholder="Search for a booking ..." />
         <input class="search-button" type="submit" value="Search" />
-    </form>
-    
+    </form>   
+</div>
+
+<div id="bookingslist">
+    <script>
+        AddTables();
+    </script>
 </div>

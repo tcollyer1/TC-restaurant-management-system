@@ -28,9 +28,10 @@
 
         $('#page-wrapper').load('viewBookings.html');
 
+
         RemoveActive();
         UpdateActive('#viewbookings');
-
+        //DisplayBookings();
     })
 
     $('#openingtimes').click(function () {
@@ -54,3 +55,12 @@ function RemoveActive()
 
     items.removeClass("active");
 }
+
+
+
+
+
+
+
+
+
