@@ -1,4 +1,4 @@
-﻿$(document).ready(function () {
+﻿$(document).ready(function () {    
 
     $('#book').click(function () {
 
@@ -55,8 +55,6 @@ function RemoveActive()
 
     items.removeClass("active");
 }
-
-
 
 
 
