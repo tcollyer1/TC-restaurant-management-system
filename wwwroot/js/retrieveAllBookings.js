@@ -28,7 +28,8 @@ function AddTables() { // Will read in data from a list and add a table to the <
                     <td><b>Phone No.: </b></td>
                     <td>${bookingInfo.phone}</td>
                     </tr>`;
-        tableContent += "</table><br /><br />";
+        tableContent += `</table><br /><br />
+                        <button>Cancel</button>`;
     }
 
 

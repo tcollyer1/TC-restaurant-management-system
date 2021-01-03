@@ -17,12 +17,12 @@
 
     })
 
-    $('#cancelbooking').click(function () {
-        $('#page-wrapper').load('cancelbooking.html');
+    //$('#cancelbooking').click(function () {
+    //    $('#page-wrapper').load('cancelbooking.html');
 
-        RemoveActive();
-        UpdateActive('#cancelbooking');
-    })
+    //    RemoveActive();
+    //    UpdateActive('#cancelbooking');
+    //})
 
     $('#viewbookings').click(function () {
 
