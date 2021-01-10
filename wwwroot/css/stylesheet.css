@@ -156,7 +156,7 @@ nav ul li {
     width: 100%;
 }
 
-.search-button {
+.site-button {
     border: none;
     background-color: #fc8c03;
     color: white;
@@ -165,7 +165,7 @@ nav ul li {
     border: none;
 }
 
-    .search-button:hover {
+    .site-button:hover {
         background-color: #ffb459;
     }
 
@@ -200,6 +200,11 @@ table {
     table td {
         border: 2px solid orange;
     }
+
+table #cancelbutton {
+    text-align: center;
+    vertical-align: middle;
+}
 
 #bookingslist {
     margin: 0 auto;
