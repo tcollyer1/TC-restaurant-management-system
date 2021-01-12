@@ -31,7 +31,6 @@
 
         RemoveActive();
         UpdateActive('#viewbookings');
-        //DisplayBookings();
     })
 
     $('#openingtimes').click(function () {
@@ -40,7 +39,7 @@
 
         RemoveActive();
 
-    })
+    })    
  
 });
 

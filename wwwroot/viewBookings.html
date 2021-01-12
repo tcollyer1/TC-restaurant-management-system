@@ -1,5 +1,6 @@
 ﻿<script src="js/retrieveAllBookings.js"></script>
 <script src="js/retrieveInfo.js"></script>
+<script src="js/index.js"></script>
 
 <div id="viewbookings">
     <h2>Find a booking</h2>
@@ -7,11 +8,21 @@
 
 </div>
 
-<div class="container bottom-padding">
-    <form id="viewbooking-searchform">
-        <input class="search-field" type="text" name="search" placeholder="Search for a booking ..." />
-        <input class="site-button" type="submit" value="Search" />
-    </form>
+<div class="container bottom-padding row">
+    <div class="col-md-11">
+        <form id="viewbooking-searchform">
+            <input class="search-field" type="text" name="search" placeholder="Search for a booking ..." />
+            <input class="site-button" type="submit" value="Search" />
+        </form>
+    </div>
+
+    <div class="col-md-1">
+        <button type="button" class="site-button" id="refresh-button"><strong>Refresh bookings</strong></button>
+    </div>
+    
+
+    <br/>
+    
 </div>
 
 <div id="bookingslist">

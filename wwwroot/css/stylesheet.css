@@ -169,6 +169,10 @@ nav ul li {
         background-color: #ffb459;
     }
 
+#refresh-button {
+    float: right;
+}
+
 #customer-info {
     width: 100%;
     text-align: center;

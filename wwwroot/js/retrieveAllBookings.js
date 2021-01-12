@@ -30,8 +30,8 @@ function AddTables() { // Will read in data from a list and add a table to the <
                     </tr>
 
                     <tr>
-                    <td colspan="2" id="cancelbutton"><button class="site-button">Cancel</button></td>                    
-                    </tr>`;
+                    <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>                    
+                    </tr>`; // currently sets booking name/ID as customer full name, which is not final
 
         tableContent += "</table><br /><br />";
     }
@@ -40,4 +40,14 @@ function AddTables() { // Will read in data from a list and add a table to the <
     var tablesDiv = document.createElement("div"); // adds div to the page to place the tables
     tablesDiv.innerHTML = tableContent; // adds table HTML
     document.getElementById("bookingslist").appendChild(tablesDiv); // adds to page
+}
+
+
+
+function RemoveBooking(theKey) { // removes a booking from storage when cancelled
+    var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
+
+    alert("Booking for " + bookingInfo.fName + " " + bookingInfo.lName + " removed.");
+
+    window.localStorage.removeItem(theKey);
 }

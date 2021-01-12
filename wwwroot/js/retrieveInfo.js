@@ -1,6 +1,4 @@
-﻿//bookings = typeof (bookings) == 'undefined' ? [] : bookings;
-
-var bookings = {};
+﻿var bookings = {};
 
 function GetBookingDetails() { // currently stores booking data locally as an object
     var fName = document.forms[0]["firstName"].value;
@@ -10,15 +8,16 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
 
     
 
-    if (fName && lName && seats && phone)
+    if (fName && lName && seats && phone && seats <= 6 && seats >= 1)
     {
-        alert("First name: " + fName + ", last name: " + lName + ", seats: " + seats + ", phone No.: " + phone);
+        //alert("First name: " + fName + ", last name: " + lName + ", seats: " + seats + ", phone No.: " + phone);
+        alert("Booking for " + fName + " " + lName + " saved.");
 
         // store details
 
         bookings = { "fName": fName, "lName": lName, "seats": seats, "phone": phone };
 
-        var key = fName + " " + lName;
+        var key = fName + lName;
 
         window.localStorage.setItem(key, JSON.stringify(bookings));
 
@@ -26,13 +25,25 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         
     }
 
+    else if (!fName || !lName || !seats || !phone) {
+        alert("Some form details missing");
+
+        // do not store details
+
+        return false;   
+    }
+
     else
     {
-        alert("Some form details missing");
+        alert("Number of people at a table must be between 1-6.");        
 
         // do not store details
 
         return false;      
     }
 }
+
+$('#refresh-button').click(function () {
+    $('#page-wrapper').load('viewBookings.html');
+})
 
