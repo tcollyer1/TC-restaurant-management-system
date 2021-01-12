@@ -4,7 +4,7 @@
 
         $('#page-wrapper').load('book.html');
 
-        RemoveActive();
+        RemoveActive(); 
         UpdateActive('#book');
         
     })

@@ -37,7 +37,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     {
         alert("Number of people at a table must be between 1-6.");        
 
-        // do not store details
+        // do not store details 
 
         return false;      
     }

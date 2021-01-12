@@ -8,7 +8,7 @@ function AddTables() { // Will read in data from a list and add a table to the <
         var key = localStorage.key(i);
         var bookingInfo = JSON.parse(localStorage[key]);
 
-        tableContent += "<table>";
+        tableContent += "<table>"; 
         tableContent += `<tr>
                     <td><b>First name: </b></td>
                     <td>${bookingInfo.fName}</td>
