@@ -17,13 +17,6 @@
 
     })
 
-    //$('#cancelbooking').click(function () {
-    //    $('#page-wrapper').load('cancelbooking.html');
-
-    //    RemoveActive();
-    //    UpdateActive('#cancelbooking');
-    //})
-
     $('#viewbookings').click(function () {
 
         $('#page-wrapper').load('viewBookings.html');

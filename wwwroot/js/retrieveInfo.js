@@ -5,17 +5,17 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     var lName = document.forms[0]["lastName"].value;
     var seats = document.forms[0]["numSeats"].value;
     var phone = document.forms[0]["phone"].value;
-
+    var dateTime = document.forms[0]["datetime"].value;
     
 
-    if (fName && lName && seats && phone && seats <= 6 && seats >= 1)
+    if (fName && lName && seats && phone && dateTime && seats <= 6 && seats >= 1)
     {
         //alert("First name: " + fName + ", last name: " + lName + ", seats: " + seats + ", phone No.: " + phone);
         alert("Booking for " + fName + " " + lName + " saved.");
 
         // store details
 
-        bookings = { "fName": fName, "lName": lName, "seats": seats, "phone": phone };
+        bookings = { "fName": fName, "lName": lName, "seats": seats, "phone": phone, "dateTime": dateTime };
 
         var key = fName + lName;
 
@@ -25,7 +25,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         
     }
 
-    else if (!fName || !lName || !seats || !phone) {
+    else if (!fName || !lName || !seats || !phone || !dateTime) {
         alert("Some form details missing");
 
         // do not store details

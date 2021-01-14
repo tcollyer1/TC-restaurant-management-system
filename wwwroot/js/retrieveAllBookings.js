@@ -30,6 +30,11 @@ function AddTables() { // Will read in data from a list and add a table to the <
                     </tr>
 
                     <tr>
+                    <td><b>Booking time: </b></td>
+                    <td>${bookingInfo.dateTime}</td>
+                    </tr>
+
+                    <tr>
                     <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>                    
                     </tr>`; // currently sets booking name/ID as customer full name, which is not final
 
