@@ -121,12 +121,6 @@ p {
     width: 105%;
 }
 
-/*.row {
-    margin-left: 20px;
-    margin-right: 20px;
-    margin-top: 50px;
-}*/
-
 nav ul li {
     text-align: center;
 }
@@ -171,6 +165,10 @@ nav ul li {
 
 #refresh-button {
     float: right;
+}
+
+#modify-opening-times {
+    font-family: 'Segoe UI';
 }
 
 #customer-info {

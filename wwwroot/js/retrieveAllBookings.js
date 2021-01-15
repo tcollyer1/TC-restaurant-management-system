@@ -52,7 +52,10 @@ function AddTables() { // Will read in data from a list and add a table to the <
 function RemoveBooking(theKey) { // removes a booking from storage when cancelled
     var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
 
-    alert("Booking for " + bookingInfo.fName + " " + bookingInfo.lName + " removed.");
+    if (confirm("Are you sure you want to remove booking for " + bookingInfo.fName + " " + bookingInfo.lName + "?")) {
+        alert("Booking for " + bookingInfo.fName + " " + bookingInfo.lName + " removed.");
+        window.localStorage.removeItem(theKey);
+    }
 
-    window.localStorage.removeItem(theKey);
+    
 }
