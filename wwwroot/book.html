@@ -9,32 +9,23 @@
 
     <form id="customerdetails" class="row">
 
-        <div class="col-md-6 form-group">
-            <label for="firstName">First name: </label><br />
-            <input type="text" id="firstName" name="firstName" placeholder="First name" /><br /><br />
-
-            <label for="lastName">Last name:</label><br />
-            <input type="text" id="lastName" name="lastName" placeholder="Last name" /><br /><br />
+        <div class="col-md-12 form-group">
+            <br />
+            <label for="name">Full name:</label><br />
+            <input type="text" id="name" name="name" placeholder="Full name" /><br /><br />
 
             <label for="phone">Phone No.:</label><br />
             <input type="text" id="phone" name="phone" placeholder="Phone number" /><br /> <br />
-        </div>
-
-        <div class="col-md-6 form-group">
-            <label for="numSeats">Number of seats: </label><br />
-            <input type="number" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
 
             <label for="bookingDate">Date:</label><br />
             <input type="date" id="bookingDate" name="bookingDate" /><br /><br />
-            
+
             <label for="bookingTime">Time:</label><br />
             <input type="time" id="bookingTime" name="bookingTime" /><br /><br />
-        </div>
 
-        <!--<div class="col-md-12">
-            <label for="date-time">Date/time: </label><br />
-            <input type="datetime-local" id="datetime" name="datetime" /><br /><br /> <br />
-        </div>-->
+            <label for="numSeats">Number of seats: </label><br />
+            <input type="number" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
+        </div>
 
         <div class="col-md-12">
             <input id="bookingSubmit" class="site-button" type="submit" value="Continue" onclick="return GetBookingDetails()" />

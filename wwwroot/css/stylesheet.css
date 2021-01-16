@@ -163,8 +163,14 @@ nav ul li {
         background-color: #ffb459;
     }
 
-#refresh-button {
+/*#refresh-button {
     float: right;
+}*/
+
+#refreshSection {
+    text-align: right;
+    font-family: 'Segoe UI';
+    padding-right: 80px;
 }
 
 #modify-opening-times {

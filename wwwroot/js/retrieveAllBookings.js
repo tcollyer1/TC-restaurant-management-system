@@ -11,13 +11,12 @@ function AddTables() { // Will read in data from a list and add a table to the <
 
         // -------------------------------- Cleaner way of storing/displaying bookings: only one row per booking rather than one table
         tableContent += `
-                        <td>${bookingInfo.fName}</td>
-                        <td>${bookingInfo.lName}</td>
+                        <td>${bookingInfo.name}</td>
                         <td>${bookingInfo.seats}</td>
                         <td>${bookingInfo.phone}</td>
                         <td>${bookingInfo.date}</td>
                         <td>${bookingInfo.time}</td>
-                        <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>
+                        <td colspan="2" id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.phone}')">Cancel</button></td>
                         `;
 
         var tablesDiv = document.createElement("tr"); // adds div to the page to place the tables
@@ -74,8 +73,8 @@ function AddTables() { // Will read in data from a list and add a table to the <
 function RemoveBooking(theKey) { // removes a booking from storage when cancelled
     var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
 
-    if (confirm("Are you sure you want to remove booking for " + bookingInfo.fName + " " + bookingInfo.lName + "?")) {
-        alert("Booking for " + bookingInfo.fName + " " + bookingInfo.lName + " removed.");
+    if (confirm("Are you sure you want to remove booking for " + bookingInfo.name + "?")) {
+        alert("Booking for " + bookingInfo.name + " removed.");
         window.localStorage.removeItem(theKey);
     }
 

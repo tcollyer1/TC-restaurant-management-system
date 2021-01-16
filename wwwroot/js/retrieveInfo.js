@@ -1,22 +1,20 @@
 ﻿var bookings = {};
 
 function GetBookingDetails() { // currently stores booking data locally as an object
-    var fName = document.forms[0]["firstName"].value;
-    var lName = document.forms[0]["lastName"].value;
+    var name = document.forms[0]["name"].value
     var seats = document.forms[0]["numSeats"].value;
     var phone = document.forms[0]["phone"].value;
     var date = document.forms[0]["bookingDate"].value;
     var time = document.forms[0]["bookingTime"].value;
     
 
-    if (fName && lName && seats && phone && date && time && seats <= 6 && seats >= 1)
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1)
     {
-        alert("Booking for " + fName + " " + lName + " saved.");
+        alert("Booking for " + name + " saved.");
 
         // store details as bookings object
         bookings = {
-            "fName": fName,
-            "lName": lName,
+            "name": name,
             "seats": seats,
             "phone": phone,
             "date": date,
@@ -42,15 +40,16 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         //newLink.click();
         //// // // 
 
+
         // store booking to local storage
-        var key = fName + lName;
+        var key = phone;
         window.localStorage.setItem(key, JSON.stringify(bookings));        
 
         return true;
         
     }
 
-    else if (!fName || !lName || !seats || !phone || !date || !time)
+    else if (!name || !seats || !phone || !date || !time)
     {
         alert("Some form details missing");
 
@@ -77,8 +76,7 @@ $('#refresh-button').click(function () {
 $("#bookingSearchBar").on("keyup", function () {
     var value = $(this).val();
 
-    $("table tr").each(function (index) {
-        if (index !== 0) {
+    $("table tbody tr").each(function (index) {
 
             $row = $(this);
 
@@ -90,7 +88,6 @@ $("#bookingSearchBar").on("keyup", function () {
             else {
                 $row.show();
             }
-        }
     });
 });
 
