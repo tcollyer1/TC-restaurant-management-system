@@ -11,21 +11,36 @@
 <div class="container bottom-padding row">
     <div class="col-md-11"> 
         <form id="viewbooking-searchform">
-            <input class="search-field" type="text" name="search" placeholder="Search for a booking ..." />
-            <input class="site-button" type="submit" value="Search" />
+            <!--<input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a booking ..." />-->
+            <!--<input class="site-button" type="submit" value="Search" />-->
         </form>
     </div>
 
     <div class="col-md-1">
         <button type="button" class="site-button" id="refresh-button"><strong>Refresh bookings</strong></button>
     </div>
-    
-
     <br/>
     
 </div>
 
 <div id="bookingslist">
+    <p><input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a booking ..." /> <br /><br /></p>
+    <table class="datatables-table" id="allBookings">
+        <thead>
+            <tr>
+                <th>First name</th>
+                <th>Last name</th>
+                <th>Seats</th>
+                <th>Phone No.</th>
+                <th>Booking date</th>
+                <th>Booking time</th>
+                <th>Cancel</th>
+            </tr>
+        </thead>
+        <tbody id="bookingData">
+        </tbody>
+    </table>
+
     <script>
         AddTables();
     </script>

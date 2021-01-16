@@ -15,6 +15,9 @@
 
             <label for="lastName">Last name:</label><br />
             <input type="text" id="lastName" name="lastName" placeholder="Last name" /><br /><br />
+
+            <label for="bookingDate">Date:</label><br />
+            <input type="date" id="bookingDate" name="bookingDate" /><br /><br />
         </div>
 
         <div class="col-md-6 form-group">
@@ -22,13 +25,16 @@
             <input type="number" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
 
             <label for="phone">Phone No.:</label><br />
-            <input type="text" id="phone" name="phone" placeholder="Phone number" /><br />
+            <input type="text" id="phone" name="phone" placeholder="Phone number" /><br /> <br />
+
+            <label for="bookingTime">Time:</label><br />
+            <input type="time" id="bookingTime" name="bookingTime" /><br /><br />
         </div>
 
-        <div class="col-md-12">
+        <!--<div class="col-md-12">
             <label for="date-time">Date/time: </label><br />
             <input type="datetime-local" id="datetime" name="datetime" /><br /><br /> <br />
-        </div>
+        </div>-->
 
         <div class="col-md-12">
             <input id="bookingSubmit" class="site-button" type="submit" value="Continue" onclick="return GetBookingDetails()" />

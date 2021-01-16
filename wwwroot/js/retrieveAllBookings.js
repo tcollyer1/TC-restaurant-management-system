@@ -3,48 +3,70 @@
 function AddTables() { // Will read in data from a list and add a table to the <div> container in viewBookings.html
 
     // this instead parses locally stored data back as an object and displays it.
-    let tableContent = "";
+    
     for (var i = 0, length = localStorage.length; i < length; i++) {
+        let tableContent = "";
         var key = localStorage.key(i);
         var bookingInfo = JSON.parse(localStorage[key]);
 
-        tableContent += "<table>"; 
-        tableContent += `<tr>
-                    <td><b>First name: </b></td>
-                    <td>${bookingInfo.fName}</td>
-                    </tr>
+        // -------------------------------- Cleaner way of storing/displaying bookings: only one row per booking rather than one table
+        tableContent += `
+                        <td>${bookingInfo.fName}</td>
+                        <td>${bookingInfo.lName}</td>
+                        <td>${bookingInfo.seats}</td>
+                        <td>${bookingInfo.phone}</td>
+                        <td>${bookingInfo.date}</td>
+                        <td>${bookingInfo.time}</td>
+                        <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>
+                        `;
 
-                    <tr>
-                    <td><b>Last name: </b></td>
-                    <td>${bookingInfo.lName}</td>
-                    </tr>
+        var tablesDiv = document.createElement("tr"); // adds div to the page to place the tables
+        tablesDiv.innerHTML = tableContent; // adds table HTML
+        document.getElementById("bookingData").appendChild(tablesDiv); // adds to page
+        // --------------------------------
 
-                    <tr>
-                    <td><b>Seats: </b></td>
-                    <td>${bookingInfo.seats}</td>
-                    </tr>
+        //tableContent += `<table id="bookingsTable">`;
+        //tableContent += `<tr>
+        //            <td><b>First name: </b></td>
+        //            <td>${bookingInfo.fName}</td>
+        //            </tr>
+
+        //            <tr>
+        //            <td><b>Last name: </b></td>
+        //            <td>${bookingInfo.lName}</td>
+        //            </tr>
+
+        //            <tr>
+        //            <td><b>Seats: </b></td>
+        //            <td>${bookingInfo.seats}</td>
+        //            </tr>
                     
-                    <tr>
-                    <td><b>Phone No.: </b></td>
-                    <td>${bookingInfo.phone}</td>
-                    </tr>
+        //            <tr>
+        //            <td><b>Phone No.: </b></td>
+        //            <td>${bookingInfo.phone}</td>
+        //            </tr>
 
-                    <tr>
-                    <td><b>Booking time: </b></td>
-                    <td>${bookingInfo.dateTime}</td>
-                    </tr>
+        //            <tr>
+        //            <td><b>Booking date: </b></td>
+        //            <td>${bookingInfo.date}</td>
+        //            </tr
 
-                    <tr>
-                    <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>                    
-                    </tr>`; // currently sets booking name/ID as customer full name, which is not final
+        //            <tr>
+        //            <td><b>Booking time: </b></td>
+        //            <td>${bookingInfo.time}</td>
+        //            </tr>
 
-        tableContent += "</table><br /><br />";
+        //            <tr>
+        //            <td colspan="2" id="cancelbutton"><button id="${bookingInfo.fName}${bookingInfo.lName}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.fName}${bookingInfo.lName}')">Cancel</button></td>                    
+        //            </tr>`; // currently sets booking name/ID as customer full name, which is not final
+
+        //tableContent += "</table><br /><br />";
     }
 
 
-    var tablesDiv = document.createElement("div"); // adds div to the page to place the tables
-    tablesDiv.innerHTML = tableContent; // adds table HTML
-    document.getElementById("bookingslist").appendChild(tablesDiv); // adds to page
+    //var tablesDiv = document.createElement("div"); // adds div to the page to place the tables
+    //tablesDiv.innerHTML = tableContent; // adds table HTML
+    //document.getElementById("bookingslist").appendChild(tablesDiv); // adds to page
 }
 
 
