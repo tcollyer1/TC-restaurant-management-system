@@ -26,6 +26,15 @@
         UpdateActive('#viewbookings');
     })
 
+    $('#tables').click(function () {
+
+        $('#page-wrapper').load('tables.html');
+
+
+        RemoveActive();
+        UpdateActive('#tables');
+    })
+
     $('#openingtimes').click(function () {
 
         $('#page-wrapper').load('openingTimes.html');

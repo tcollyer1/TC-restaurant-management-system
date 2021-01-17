@@ -19,7 +19,7 @@ function AddTables() { // Will read in data from a list and add a table to the <
                         <td colspan="2" id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.phone}')">Cancel</button></td>
                         `;
 
-        var tablesDiv = document.createElement("tr"); // adds div to the page to place the tables
+        var tablesDiv = document.createElement("tr"); // adds new row to the page to place the tables
         tablesDiv.innerHTML = tableContent; // adds table HTML
         document.getElementById("bookingData").appendChild(tablesDiv); // adds to page
         // --------------------------------

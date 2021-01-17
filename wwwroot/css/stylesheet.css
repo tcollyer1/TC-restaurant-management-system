@@ -61,7 +61,7 @@ p {
 }
 
 
-#description {
+.description {
     font-size: 32px;
     color: white;
     text-align: center;
