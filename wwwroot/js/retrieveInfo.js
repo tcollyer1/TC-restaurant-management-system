@@ -1,7 +1,7 @@
 ﻿var bookings = {};
 
 function GetBookingDetails() { // currently stores booking data locally as an object
-    var name = document.forms[0]["name"].value
+    var name = document.forms[0]["name"].value;
     var seats = document.forms[0]["numSeats"].value;
     var phone = document.forms[0]["phone"].value;
     var date = document.forms[0]["bookingDate"].value;
@@ -43,7 +43,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
 
         // store booking to local storage
         var key = phone;
-        window.localStorage.setItem(key, JSON.stringify(bookings));        
+        window.localStorage.setItem(key, JSON.stringify(bookings));
 
         return true;
         

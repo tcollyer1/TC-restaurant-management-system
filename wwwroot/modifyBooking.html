@@ -1,0 +1,37 @@
+﻿<script src="js/retrieveAllBookings.js"></script>
+<script src="js/index.js"></script>
+
+<div id="modify-booking">
+    <h2>Edit a booking</h2>
+    <p class="description">Change details of this booking here.</p>
+</div>
+
+<div id="customer-info-edit">
+
+    <form id="customerdetailsedit" class="row">
+        <div class="col-md-12 form-group">
+            <br />
+            <label for="nameEdit">Full name:</label><br />
+            <input type="text" class="form-input" id="nameEdit" name="nameEdit" placeholder="Full name" /><br /><br />
+
+            <label for="phoneEdit">Phone No.:</label><br />
+            <input type="text" class="form-input" id="phoneEdit" name="phoneEdit" placeholder="Phone number" /><br /> <br />
+
+            <label for="bookingDateEdit">Date:</label><br />
+            <input type="date" class="form-input" id="bookingDateEdit" name="bookingDateEdit" /><br /><br />
+
+            <label for="bookingTimeEdit">Time:</label><br />
+            <input type="time" class="form-input" id="bookingTimeEdit" name="bookingTimeEdit" /><br /><br />
+
+            <label for="numSeatsEdit">Number of seats: </label><br />
+            <input type="number" class="form-input" min="1" max="6" id="numSeatsEdit" name="numSeatsEdit" placeholder="1-6" /><br /><br />
+        </div>
+
+        <div class="col-md-12">
+            <input id="cancelEdit" class="site-button" type="button" onclick="BackToBookings()" value="Cancel" />
+            <input id="editSubmit" class="site-button" type="submit" value="Continue" onclick="return UpdateBookingToStorage()" />
+        </div>
+
+    </form>
+
+</div>

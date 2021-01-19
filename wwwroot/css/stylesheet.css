@@ -180,7 +180,11 @@ nav ul li {
 #customer-info {
     width: 100%;
     text-align: center;
-    display: block;
+}
+
+#customer-info-edit {
+    width: 100%;
+    text-align: center;
 }
 
 .transparent-bg {
@@ -226,6 +230,10 @@ table #cancelbutton {
 
 label {
     color: white;
+}
+
+.form-input {
+    width: 30%;
 }
 
 

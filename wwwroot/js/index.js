@@ -41,8 +41,7 @@
 
         RemoveActive();
 
-    })    
- 
+    })   
 });
 
 function UpdateActive(item) // changes active page
