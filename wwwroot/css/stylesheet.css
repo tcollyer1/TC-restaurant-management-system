@@ -222,6 +222,11 @@ table #cancelbutton {
     vertical-align: middle;
 }
 
+    table #modifybutton {
+        text-align: center;
+        vertical-align: middle;
+    }
+
 #bookingslist {
     margin: 0 auto;
     height: 100%;
