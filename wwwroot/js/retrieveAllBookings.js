@@ -16,7 +16,7 @@ function AddTables() { // Will read in data from a list and add a table to the <
                         <td>${bookingInfo.phone}</td>
                         <td>${bookingInfo.date}</td>
                         <td>${bookingInfo.time}</td>
-                        <td id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="RemoveBooking('${bookingInfo.phone}')">Cancel</button></td>
+                        <td id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button site-button-cancel" onclick="RemoveBooking('${bookingInfo.phone}')">Remove</button></td>
                         <td id="modifybutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="ModifyBooking('${bookingInfo.phone}')">Modify</button></td>
                         `;
 

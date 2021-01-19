@@ -163,15 +163,18 @@ nav ul li {
         background-color: #ffb459;
     }
 
-/*#refresh-button {
-    float: right;
-}*/
-
-#refreshSection {
-    text-align: right;
-    font-family: 'Segoe UI';
-    padding-right: 80px;
+.site-button-cancel {
+    background-color: #cc1b1b;
 }
+    .site-button-cancel:hover {
+        background-color: #d65c5c;
+    }
+
+    #refreshSection {
+        text-align: right;
+        font-family: 'Segoe UI';
+        padding-right: 80px;
+    }
 
 #modify-opening-times {
     font-family: 'Segoe UI';
