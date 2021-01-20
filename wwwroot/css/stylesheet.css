@@ -53,6 +53,16 @@ h3 {
     padding-top: 40px;
 }
 
+    h3 a {
+        color: white;
+        -webkit-transition: color 0.5s;
+        transition: color 0.5s;
+    }
+
+        h3 a:hover {
+            color: #cc5510;
+        }
+
 p {
     color: white;
     font-size: 16px;
@@ -191,7 +201,7 @@ nav ul li {
 }
 
 .transparent-bg {
-    background-color: rgba(42, 42, 42, 0.5);
+    background-color: rgba(42, 42, 42, 0.7);
 }
 
 .bottom-margin { 
@@ -212,11 +222,11 @@ table {
 }
 
     table td {
-        border: 2px solid orange;
+        border: 1px solid orange;
     }
 
     table th {
-        border: 2px solid orange;
+        border: 1px solid orange;
         background-color: #ffdaa3;
     }
 
