@@ -21,26 +21,6 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
             "time": time
         };
 
-        //// // // This attempts to write bookings object to a text file, doesn't work great but just an attempt
-        //const textToBLOB = new Blob([JSON.stringify(bookings)], { type: 'text/plain' });
-        //const file = "/customerBookings/bookings.txt";
-
-        //let newLink = document.createElement("a");
-        //newLink.download = file;
-
-        //if (window.webkitURL != null) {
-        //    newLink.href = window.webkitURL.createObjectURL(textToBLOB);
-        //}
-        //else {
-        //    newLink.href = window.URL.createObjectURL(textToBLOB);
-        //    newLink.style.display = "none";
-        //    document.body.appendChild(newLink);
-        //}
-
-        //newLink.click();
-        //// // // 
-
-
         // store booking to local storage
         var key = phone;
         window.localStorage.setItem(key, JSON.stringify(bookings));
@@ -78,8 +58,9 @@ $("#bookingSearchBar").on("keyup", function () {
     $("table tbody tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
-});
+}); 
 
+// Filters bookings by date
 $("#dateFilter").on("input", function () {
     var value = $(this).val().toLowerCase();
     $("table tbody tr").filter(function () {
