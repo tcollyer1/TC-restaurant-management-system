@@ -93,7 +93,7 @@ p {
     margin-top: 55px;
     overflow: scroll;
     /*margin-bottom: 100px;*/
-    padding-bottom: 50px; /*Was 10px*/
+    /*padding-bottom: 50px;*/ /*Was 10px*/
 }
 
 #page-content {
@@ -200,6 +200,7 @@ nav ul li {
 #customer-info {
     width: 100%;
     text-align: center;
+    padding-bottom: 50px;
 }
 
 #customer-info-edit {
@@ -251,6 +252,11 @@ table #cancelbutton {
     margin: 0 auto;
     height: 100%;
     width: 100%;
+    padding-bottom: 50px;
+}
+
+#bookingsTable {
+    padding-bottom: 50px;
 }
 
 label {
