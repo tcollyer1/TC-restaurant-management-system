@@ -72,22 +72,26 @@ $('#refresh-button').click(function () {
     $('#page-wrapper').load('viewBookings.html');
 })
 
-// Simple search through table for bookings - only works with first name currently
+// Simple search through table for bookings
 $("#bookingSearchBar").on("keyup", function () {
-    var value = $(this).val();
-
-    $("table tbody tr").each(function (index) {
-
-            $row = $(this);
-
-            var id = $row.find("td").text();
-
-            if (id.indexOf(value) !== 0) {
-                $row.hide();
-            }
-            else {
-                $row.show();
-            }
+    var value = $(this).val().toLowerCase();
+    $("table tbody tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
 });
+
+$("#dateFilter").on("input", function () {
+    var value = $(this).val().toLowerCase();
+    $("table tbody tr").filter(function () {
+        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+});
+
+function ClearDateFilter() {
+    $('#dateFilter').val('');
+    $("table tbody tr").each(function (index) {
+        $row = $(this);
+        $row.show();
+    })
+}
 

@@ -169,6 +169,10 @@ nav ul li {
     border: none;
 }
 
+.date-filter-padding {
+    padding-left: 5%;
+}
+
     .site-button:hover {
         background-color: #ffb459;
     }
