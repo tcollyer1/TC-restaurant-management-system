@@ -1,5 +1,6 @@
 ﻿<script src="js/retrieveAllBookings.js"></script>
 <script src="js/index.js"></script>
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
 
 <div id="modify-booking">
     <h2>Edit a booking</h2>
@@ -28,8 +29,8 @@
         </div>
 
         <div class="col-md-12">
-            <input id="cancelEdit" class="site-button" type="button" onclick="BackToBookings()" value="Cancel" />
-            <input id="editSubmit" class="site-button" type="submit" value="Continue" onclick="return UpdateBookingToStorage()" />
+            <button id="cancelEdit" class="site-button" type="button" onclick="BackToBookings()"><i class="fas fa-times"></i>   Cancel</button>
+            <button id="editSubmit" class="site-button" type="submit" onclick="return UpdateBookingToStorage()"><i class="fas fa-check"></i>   Update</button>
         </div>
 
     </form>
