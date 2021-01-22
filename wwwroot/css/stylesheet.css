@@ -11,6 +11,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
+    /* overflow: hidden; */
 }
 
 .footer {
@@ -22,6 +23,7 @@ body {
     height: 50px; /*was 60px*/
     line-height: 50px; /*was 60px*/
     background-color: #fc8c03;
+    /* background-color: #1b1b1b; */
     position: fixed;
     bottom: 0;
 }
@@ -54,13 +56,14 @@ h3 {
 }
 
     h3 a {
-        color: white;
-        -webkit-transition: color 0.5s;
+        color: rgb(228, 110, 15);
+        -webkit-transition: color 0.3s;
         transition: color 0.5s;
     }
 
         h3 a:hover {
-            color: #cc5510;
+            /* color: #cc5510; */
+            color:rgb(255, 239, 219)
         }
 
 p {
@@ -79,20 +82,28 @@ p {
 }
 
 .navbar-custom {
-    background-color: #fc8c03;    
+    /* background-color: #fc8c03;*/
+    background-color: #1b1b1b
 }
 
 .sidenav-rounded {
     border-radius: 0px 0px 50px 0px;
+    height: 70%; /*delete*/
+}
+
+#pageDescriptions {
+    padding-bottom: 50px;
 }
 
 #page-wrapper {
-    width: 70%;
-    height: 100vh;
+    width: 75%;
+    /* height: 100vh; */
+    height: calc(100% - 50px);
     margin: 0 auto;
     margin-top: 55px;
-    overflow: scroll;
-    padding-bottom: 50px;
+    /* margin-bottom: 50px; delete if needed */
+    overflow: auto;
+    /* padding-bottom: 50px; */
     /*margin-bottom: 100px;*/
     /*padding-bottom: 50px;*/ /*Was 10px*/
 }
@@ -100,13 +111,14 @@ p {
 #page-content {
     width: 100%;
     height: 100vh;
-    margin-bottom: 50px; 
-    padding-bottom: 50px;
+    display: inline-block;
+    /* margin-bottom: 50px;  */
+    /* padding-bottom: 50px;     */
 }
 
 .nav-container {
     width: 200px;
-    height: 200px;
+    height: 70%; /*was 200px*/
     position: fixed;
 }
 
@@ -117,6 +129,7 @@ p {
     position: fixed;
     margin: 0;
     padding: 0;
+    height: 100%;
 }
 
     .nav-container:hover #sidenav {
@@ -125,7 +138,8 @@ p {
     }
 
 #sidenav a:hover, #topnav .nav-link:hover {
-    background-color: #f7a745;
+    /* background-color: #f7a745; */
+    background-color: rgb(65, 65, 65);
     color: white;
     border-radius: 25px;
     width: 105%;
@@ -136,7 +150,8 @@ nav ul li {
 }
 
 .active {
-    background-color: #cf7100;
+    /* background-color: #cf7100; */
+    background-color: rgb(0, 0, 0);
     border-radius: 25px;
 }
 
@@ -196,12 +211,13 @@ nav ul li {
 
 #modify-opening-times {
     font-family: 'Segoe UI';
+    margin-bottom: 50px;
 }
 
 #customer-info {
     width: 100%;
     text-align: center;
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 #customer-info-edit {
@@ -210,7 +226,7 @@ nav ul li {
 }
 
 .transparent-bg {
-    background-color: rgba(42, 42, 42, 0.7);
+    background-color: rgba(22, 22, 22, 0.842);
 }
 
 .bottom-margin { 
@@ -225,7 +241,7 @@ table {
     margin: 0 auto;
     color: black;
     border-collapse: collapse;
-    padding-bottom: 300px;
+    /* padding-bottom: 300px; */
     width: 50%;
     background-color: white;
 }
@@ -253,7 +269,7 @@ table #cancelbutton {
     margin: 0 auto;
     height: 100%;
     width: 100%;
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 
 #bookingsTable {
@@ -267,9 +283,3 @@ label {
 .form-input {
     width: 30%;
 }
-
-
-
-
-
-
