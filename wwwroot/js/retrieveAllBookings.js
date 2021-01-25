@@ -33,6 +33,7 @@ function RemoveBooking(theKey) {
     if (confirm("Are you sure you want to remove booking for " + bookingInfo.name + "?")) {
         alert("Booking for " + bookingInfo.name + " removed.");
         window.localStorage.removeItem(theKey);
+        $('#page-wrapper').load('viewBookings.html');
     }
 
     
@@ -51,51 +52,8 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
 }
 
 // writes a modified booking back to storage with updated data.
-function UpdateBookingToStorage() {
-    var name = document.forms[0]["nameEdit"].value
-    var seats = document.forms[0]["numSeatsEdit"].value;
-    var phone = document.forms[0]["phoneEdit"].value;
-    var date = document.forms[0]["bookingDateEdit"].value;
-    var time = document.forms[0]["bookingTimeEdit"].value;
-
-    if (name && seats && phone && date && time && seats <= 6 && seats >= 1) {
-        alert("Booking for " + name + " updated.");
-
-        // store details as bookings object
-        bookings = {
-            "name": name,
-            "seats": seats,
-            "phone": phone,
-            "date": date,
-            "time": time
-        };
-
-        var key = phone;
-
-        window.localStorage.setItem(key, JSON.stringify(bookings));
-
-        return true;
-    }
-
-    else if (!name || !seats || !phone || !date || !time) {
-        alert("Some form details missing");
-
-        // do not store details
-
-        return false;
-    }
-
-    else {
-        alert("Number of people at a table must be between 1-6.");
-
-        // do not store details 
-
-        return false;
-    }
-}
 
 
-function BackToBookings() {
-    $('#page-wrapper').load('viewBookings.html');
-}
+
+
 

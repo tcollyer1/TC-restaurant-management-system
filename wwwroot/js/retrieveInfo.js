@@ -24,6 +24,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         // store booking to local storage
         var key = phone;
         window.localStorage.setItem(key, JSON.stringify(bookings));
+        $(".form-input").val('');
 
         return true;
         
@@ -48,9 +49,59 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     }
 }
 
-$('#refresh-button').click(function () {
+function UpdateBookingToStorage() {
+    var name = document.forms[0]["nameEdit"].value
+    var seats = document.forms[0]["numSeatsEdit"].value;
+    var phone = document.forms[0]["phoneEdit"].value;
+    var date = document.forms[0]["bookingDateEdit"].value;
+    var time = document.forms[0]["bookingTimeEdit"].value;
+
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1) {
+        alert("Booking for " + name + " updated.");
+
+        // store details as bookings object
+        bookings = {
+            "name": name,
+            "seats": seats,
+            "phone": phone,
+            "date": date,
+            "time": time
+        };
+
+        var key = phone;
+
+        window.localStorage.setItem(key, JSON.stringify(bookings));
+        $("input").val('');
+        
+        BackToBookings();
+
+        return true;
+    }
+
+    else if (!name || !seats || !phone || !date || !time) {
+        alert("Some form details missing");
+
+        // do not store details
+
+        return false;
+    }
+
+    else {
+        alert("Number of people at a table must be between 1-6.");
+
+        // do not store details 
+
+        return false;
+    }
+}
+
+function BackToBookings() {
     $('#page-wrapper').load('viewBookings.html');
-})
+}
+
+// $('#refresh-button').click(function () {
+//     $('#page-wrapper').load('viewBookings.html');
+// })
 
 // Simple search through table for bookings
 $("#bookingSearchBar").on("keyup", function () {
