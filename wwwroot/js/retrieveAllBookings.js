@@ -1,6 +1,4 @@
-﻿
-
-function AddTables() { // Will read in data from a list and add a table to the <div> container in viewBookings.html
+﻿function AddTables() { // Will read in data from a list and add a table to the <div> container in viewBookings.html
 
     // this instead parses locally stored data back as an object and displays it.
     
