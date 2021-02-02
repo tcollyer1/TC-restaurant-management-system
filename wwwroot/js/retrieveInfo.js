@@ -103,7 +103,7 @@ function StartSearch() {
     // Simple search through table for bookings
     $("#bookingSearchBar").on("keyup", function () {
         var value = $(this).val().toLowerCase();
-        $("table tbody tr:visible").filter(function () {
+        $("table tbody tr").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
         });
 
