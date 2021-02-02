@@ -99,31 +99,82 @@ function BackToBookings() {
     $('#page-wrapper').load('viewBookings.html');
 }
 
-// $('#refresh-button').click(function () {
-//     $('#page-wrapper').load('viewBookings.html');
-// })
-
-// Simple search through table for bookings
-$("#bookingSearchBar").on("keyup", function () {
-    var value = $(this).val().toLowerCase();
-    $("table tbody tr").filter(function () {
+function StartSearch() {
+    // Simple search through table for bookings
+    $("#bookingSearchBar").on("keyup", function () {
+        var value = $(this).val().toLowerCase();
+        $("table tbody tr:visible").filter(function () {
         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-}); 
+        });
 
-// Filters bookings by date
-$("#dateFilter").on("input", function () {
-    var value = $(this).val().toLowerCase();
+        var numVisible = $('table tbody tr:visible').length;
+
+        if (numVisible < 1) {
+            $('.not-found').css('display', 'block');
+        }
+        else {
+            $('.not-found').css('display', 'none');
+        }
+    }); 
+    
+}
+
+function StartDateTimeFilter() { // Filters bookings by date and time
+    $("table tbody tr").show();
+
+    var currDate = $('#dateFilter').val();
+    var currTime = $('#timeFilter').val();
+
     $("table tbody tr").filter(function () {
-        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        $(this).toggle($(this).text().indexOf(currDate) > -1);       
     });
-});
 
-function ClearDateFilter() {
+    $("table tbody tr:visible").filter(function () {
+        $(this).toggle($(this).text().indexOf(currTime) > -1);
+    });
+
+    var numVisible = $('table tbody tr:visible').length;
+
+    if (numVisible < 1) {
+        $('.not-found').css('display', 'block');
+    }
+    else {
+        $('.not-found').css('display', 'none');
+    }
+}
+
+
+// function StartDateFilter() {
+// // Filters bookings by date
+// $("#dateFilter").on("input", function () {
+//     var value = $(this).val();
+//     $("table tbody tr").filter(function () {
+//         $(this).toggle($(this).text().indexOf(value) > -1)
+//     });
+// });
+
+// }
+
+// function StartTimeFilter() {
+//     // Filters bookings by time
+//     $("#timeFilter").on("input", function () {
+//         var value = $(this).val();
+//         $("table tbody tr").filter(function () {
+//             $(this).toggle($(this).text().indexOf(value) > -1)
+//         });
+//     });
+// }
+
+function ClearDateTimeFilters() {
     $('#dateFilter').val('');
-    $("table tbody tr").each(function (index) {
+    $('#timeFilter').val('');
+    $("table tbody tr").each(function () {
         $row = $(this);
         $row.show();
     })
+    $('.not-found').css('display', 'none');
 }
 
+function ClearBookingForm() {
+    $('.form-input').val('');
+}

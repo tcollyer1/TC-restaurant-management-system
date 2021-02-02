@@ -1,6 +1,6 @@
-﻿function AddTables() { // Will read in data from a list and add a table to the <div> container in viewBookings.html
+﻿function AddTables() { 
 
-    // this instead parses locally stored data back as an object and displays it.
+    // this parses locally stored data back as an object and displays it in HTML table format
     
     for (var i = 0, length = localStorage.length; i < length; i++) {
         let tableContent = "";

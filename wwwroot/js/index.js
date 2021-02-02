@@ -82,10 +82,3 @@ function RemoveActive()
 
     items.removeClass("active");
 }
-
-
-
-
-
-
-

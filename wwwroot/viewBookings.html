@@ -15,17 +15,30 @@
 
 <div id="bookingslist">
     <!-- Filters bookings by date. -->
-    <div class="row date-filter-padding">
+    <div class="row filter-padding">
         <label for="dateFilter">Filter by date:</label>
     </div>
 
-    <div class="row date-filter-padding">
+    <div class="row filter-padding">
             <input type="date" id="dateFilter" name="dateFilter" />
-            <button id="clearDateFilter" type="button" class="site-button" onclick="ClearDateFilter()">Clear</button><br />
     </div> <br />
+
+    <div class="row filter-padding">
+        <label for="timeFilter">Filter by time:</label>
+    </div>
+
+    <div class="row filter-padding">
+        <input type="time" id="timeFilter" name="timeFilter" />
+    </div> <br />
+
+    <div class="row filter-padding">
+        <button id="clearDateTimeFilters" type="button" class="site-button" onclick="ClearDateTimeFilters()">Clear filters</button>
+        <button id="applyDateTimeFilters" type="button" class="site-button" onclick="StartDateTimeFilter()">Apply filters</button>
+    </div> <br />
+    
      
     <div id="bookingsTable">
-               <p><input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a specific booking ..." /> <br /><br /></p>
+               <p><input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a specific booking ..." onclick="StartSearch()" /> <br /><br /></p>
                <table class="datatables-table" id="allBookings">
                    <thead>
                        <tr>
@@ -42,10 +55,12 @@
                        <!-- Table data added here dynamically by JS -->
                    </tbody>
             </table>
-    </div>       
-        
+    </div>
+    
+    <!-- Displays message if no bookings matching user search/filter terms found -->
+    <div class="not-found">No bookings found.</div> 
 
-        <script>
-            AddTables();
-        </script>
+    <script>
+        AddTables();
+    </script>
 </div>
