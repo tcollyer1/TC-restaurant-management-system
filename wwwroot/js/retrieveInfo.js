@@ -6,9 +6,16 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     var phone = document.forms[0]["phone"].value;
     var date = document.forms[0]["bookingDate"].value;
     var time = document.forms[0]["bookingTime"].value;
+
+    var validPhoneNo = /^\d{10}$/;
+    var validPhone = false;
+
+    if (phone.match(validPhoneNo)) {
+        validPhone = true;
+    }
     
 
-    if (name && seats && phone && date && time && seats <= 6 && seats >= 1)
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone)
     {
         alert("Booking for " + name + " saved.");
 
@@ -39,13 +46,18 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         return false;   
     }
 
-    else
+    else if (seats < 1 || seats > 6)
     {
         alert("Number of people at a table must be between 1-6.");        
 
         // do not store details 
 
         return false;      
+    }
+
+    else {
+        alert("Phone number invalid");
+        return false;
     }
 }
 
@@ -56,7 +68,14 @@ function UpdateBookingToStorage() {
     var date = document.forms[0]["bookingDateEdit"].value;
     var time = document.forms[0]["bookingTimeEdit"].value;
 
-    if (name && seats && phone && date && time && seats <= 6 && seats >= 1) {
+    var validPhoneNo = /^\d{10}$/;
+    var validPhone = false;
+
+    if (phone.match(validPhoneNo)) {
+        validPhone = true;
+    }
+
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone) {
         alert("Booking for " + name + " updated.");
 
         // store details as bookings object
@@ -86,10 +105,16 @@ function UpdateBookingToStorage() {
         return false;
     }
 
-    else {
+    else if (seats < 1 || seats > 6) {
         alert("Number of people at a table must be between 1-6.");
 
         // do not store details 
+
+        return false;
+    }
+
+    else {
+        alert("Invalid phone number");
 
         return false;
     }
