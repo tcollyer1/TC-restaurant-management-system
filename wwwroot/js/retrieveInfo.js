@@ -12,8 +12,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
 
     if (phone.match(validPhoneNo)) {
         validPhone = true;
-    }
-    
+    }   
 
     if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone)
     {
