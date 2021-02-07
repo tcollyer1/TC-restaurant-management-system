@@ -1,0 +1,54 @@
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+<script src="js/openingTimes.js"></script>
+
+<div id="openingHours">
+    <h2>Modify opening times</h2>
+</div>
+
+<div id="modifyTimes">
+    <form id="setOpeningTimes">
+
+        <div class="col-md-12 form-group">
+            <br/>
+            <label for="MondayOpen">Monday: </label>
+            <input type="time" class="small-form-input" id="MondayOpen" name="MondayOpen" />
+            <label for="MondayClose">until: </label>
+            <input type="time" class="small-form-input" id="MondayClose" name="MondayClose" /> 
+            <button type="button" class="site-button" onclick="ClearTimesField('Monday')">Clear</button> <br/>
+
+            <br/>
+            <label for="TuesdayOpen">Tuesday: </label>
+            <input type="time" class="small-form-input" id="TuesdayOpen" name="TuesdayOpen" />
+            <label for="TuesdayClose">until: </label>
+            <input type="time" class="small-form-input" id="TuesdayClose" name="TuesdayClose" />
+            <button type="button" class="site-button" onclick="ClearTimesField('Tuesday')">Clear</button> <br/>
+
+            <br/>
+            <label for="WednesdayOpen">Wednesday: </label>
+            <input type="time" class="small-form-input" id="WednesdayOpen" name="WednesdayOpen" />
+            <label for="WednesdayClose">until: </label>
+            <input type="time" class="small-form-input" id="WednesdayClose" name="WednesdayClose" />
+            <button type="button" class="site-button" onclick="ClearTimesField('Wednesday')">Clear</button> <br/>
+
+            <br/>
+            <label for="ThursdayOpen">Thursday: </label>
+            <input type="time" class="small-form-input" id="ThursdayOpen" name="ThursdayOpen" />
+            <label for="ThursdayClose">until: </label>
+            <input type="time" class="small-form-input" id="ThursdayClose" name="ThursdayClose" />
+            <button type="button" class="site-button" onclick="ClearTimesField('Thursday')">Clear</button> <br/>      
+
+            <br/>
+            <label for="FridayOpen">Friday: </label>
+            <input type="time" class="small-form-input" id="FridayOpen" name="FridayOpen" />
+            <label for="FridayClose">until: </label>
+            <input type="time" class="small-form-input" id="FridayClose" name="FridayClose" />
+            <button type="button" class="site-button" onclick="ClearTimesField('Friday')">Clear</button> <br/> <br/>
+        </div>
+
+        <div class="col-md-12">
+            <button id="timesCancelSubmit" type="button" class="site-button site-button-cancel" onclick="BackToOpeningTimes()"><i class="fas fa-times"></i> Back</button>
+            <button id="timesSubmit" type="button" class="site-button" onclick="return StoreOpeningTimes()"><i class="fas fa-check"></i> Update opening times</button>           
+        </div> <br/> <br/>
+        
+    </form>
+</div>

@@ -217,11 +217,13 @@ nav ul li {
     margin-bottom: 50px;
 }
 
-#customer-info {
+#customer-info, #modifyTimes {
     width: 100%;
     text-align: center;
     margin-bottom: 50px;
 }
+
+
 
 #customer-info-edit {
     width: 100%;
@@ -280,12 +282,20 @@ table #cancelbutton {
     padding-bottom: 50px;
 }
 
+.not-found {
+    padding-bottom: 50px;
+}
+
 label {
     color: white;
 }
 
 .form-input {
     width: 30%;
+}
+
+.small-form-input {
+    width: 10%;
 }
 
 .phone-input {

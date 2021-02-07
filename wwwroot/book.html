@@ -1,4 +1,4 @@
-﻿<script src="js/retrieveInfo.js"></script>
+﻿<script src="js/manageBookingInfo.js"></script>
 <script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
 
 <div id="book">
@@ -16,7 +16,7 @@
             <input type="text" class="form-input" id="name" name="name" placeholder="Full name" /><br /><br />
 
             <label for="phone">Phone No.:</label><br />
-            <label>+44</label> <input type="text" class="form-input phone-input" id="phone" name="phone" placeholder="Phone number" /><br /> <br />
+            <label>+44</label> <input type="text" class="form-input phone-input" id="phone" maxlength="10" name="phone" placeholder="Phone number" /><br /> <br />
 
             <label for="bookingDate">Date:</label><br />
             <input type="date" class="form-input" id="bookingDate" name="bookingDate" /><br /><br />
@@ -31,7 +31,7 @@
         <div class="col-md-12">
             <button id="bookingDetailsClear" class="site-button site-button-cancel" type="button" onclick="ClearBookingForm()"><i class="fas fa-times"></i> Clear</button>
             <button id="bookingSubmit" class="site-button" type="button" onclick="return GetBookingDetails()"><i class="fas fa-check"></i> Submit</button>
-        </div>
+        </div> <br/> <br/>
 
     </form>
 
