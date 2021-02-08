@@ -12,6 +12,7 @@
             integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
             crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
+    <script src="js/openingTimes.js"></script>
     <script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
 
     <!--Bootstrap CSS-->
@@ -82,11 +83,15 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            Today's opening times: 15:00 - 20:00.
+        <div class="container">            
+            Today's opening times: <a id="todaysTimes"></a>
             <a href="#" id="openingtimes"><i class="far fa-clock"></i>   <strong>See all opening times</strong></a>
         </div>
     </footer>
+
+    <script>
+        DisplayTodaysOpeningTimes();
+    </script>
 
 
 </body>

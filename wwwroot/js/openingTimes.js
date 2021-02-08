@@ -106,3 +106,29 @@ function ClearTimesField(day) {
     $('#' + day + 'Open').val('');
     $('#' + day + 'Close').val('');
 }
+
+function GetDayToday() { // gets actual day of the week to display daily updated opening times
+    var date = new Date();
+    var todayNum = date.getDay();
+    var daysList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var today = daysList[todayNum];
+
+    return today;
+}
+
+function DisplayTodaysOpeningTimes() { // displays today's stored opening times in footer
+    var key = GetDayToday();
+    
+    if (key != "Sunday" && key != "Saturday") {
+        var times = JSON.parse(localStorage[key]);
+
+        if (times.open !== '' && times.close !== '') {
+            $('#todaysTimes').text(times.open + ' - ' + times.close + '.');
+        }
+
+        else $('#todaysTimes').text('CLOSED.');
+        
+    }
+
+    else $('#todaysTimes').text('CLOSED.');
+}
