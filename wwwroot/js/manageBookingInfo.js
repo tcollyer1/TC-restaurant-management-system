@@ -14,7 +14,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         validPhone = true;
     }   
 
-    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone)
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone && CheckIfWithinOpeningTimes(time, date) && CheckValidDate(date))
     {
         alert("Booking for " + name + " saved.");
 
@@ -54,6 +54,16 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         return false;      
     }
 
+    else if(CheckValidDate(date) === false) {
+        alert("Restaurant is closed on a " + GetBookingDay(date) + ". Please select another date.");
+        return false;
+    }
+
+    else if (CheckIfWithinOpeningTimes(time, date) === false) {
+        alert("Invalid timeslot - please check opening times for a " + GetBookingDay(date) + ".");
+        return false;
+    }
+
     else {
         alert("Phone number invalid");
         return false;
@@ -86,7 +96,7 @@ function UpdateBookingToStorage() {
         validPhone = true;
     }
 
-    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone) {
+    if (name && seats && phone && date && time && seats <= 6 && seats >= 1 && validPhone && CheckIfWithinOpeningTimes(time, date) && CheckValidDate(date)) {
         alert("Booking for " + name + " updated.");
 
         // store details as bookings object
@@ -121,6 +131,16 @@ function UpdateBookingToStorage() {
 
         // do not store details 
 
+        return false;
+    }
+
+    else if(CheckValidDate(date) === false) {
+        alert("Restaurant is closed on a " + GetBookingDay(date) + ". Please select another date.");
+        return false;
+    }
+
+    else if (CheckIfWithinOpeningTimes(time, date) === false) {
+        alert("Invalid timeslot - please check opening times for a " + GetBookingDay(date) + ".");
         return false;
     }
 
@@ -280,4 +300,64 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
         $('#bookingTimeEdit').val(bookingInfo.time);
         $('#numSeatsEdit').val(bookingInfo.seats);
     });
+}
+
+function CheckIfWithinOpeningTimes(timeInput, dateInput) { // validates that proposed booking time is within opening hours for specified date
+    var day = GetBookingDay(dateInput);
+    console.log('Day to check times for: ' + day);
+    var times = JSON.parse(window.localStorage.getItem(day));
+    var opens = times.open;
+    var closes = times.close;
+    var timeslotStart = new Date();
+    var timeslotEnd = new Date();
+    var targetTimeSlot = new Date();
+
+    console.log("Opening time: " + opens);
+    console.log("Closing time: " + closes);
+
+    timeslotStart.setHours(opens.split(':')[0]);
+    timeslotStart.setMinutes(opens.split(':')[1]);
+    timeslotStart.setSeconds(0);
+
+    timeslotEnd.setHours(closes.split(':')[0]);
+    timeslotEnd.setMinutes(closes.split(':')[1]);
+    timeslotEnd.setSeconds(0);
+
+    targetTimeSlot.setHours(timeInput.split(':')[0]);
+    targetTimeSlot.setMinutes(timeInput.split(':')[1]);
+    targetTimeSlot.setSeconds(0);
+
+    if (timeslotStart === null) { // if no opening times for this day (restaurant is closed)
+        return false;
+    }
+
+    if (targetTimeSlot >= timeslotStart && targetTimeSlot < timeslotEnd) {
+        return true;
+    }
+    else return false;
+}
+
+function GetBookingDay(userDate) { // gets day of entered booking date to validate timeslot against stored opening times
+    var theDate = new Date(userDate);
+    var todayNum = theDate.getDay();
+    var daysList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    var today = daysList[todayNum];
+
+    return today;
+}
+
+function CheckValidDate(userDate) {
+    var day = GetBookingDay(userDate);
+    var key = JSON.parse(window.localStorage.getItem(day));
+
+    if (key === null) {
+        return false;
+    }
+    
+
+    else if (key.open == "" && key.close == "") {
+        return false;
+    }
+
+    else return true;
 }
