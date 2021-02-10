@@ -1,5 +1,28 @@
 ﻿var bookings = {};
 
+function GetNextBookingId() {
+    var largest = 0;
+    var validBookingKey = /^[0-9]/;
+
+    for (var i = 0, length = localStorage.length; i < length; i++) {
+        var isBooking = false;
+        var key = localStorage.key(i);
+
+        if (key.match(validBookingKey)) {
+	        isBooking = true;
+        }
+
+        if (isBooking && key > largest) {
+            largest = key;
+        }
+    }
+    console.log(largest);
+
+    largest = (parseInt(largest) + 1);
+
+    return largest;
+}
+
 function GetBookingDetails() { // currently stores booking data locally as an object
     var name = document.forms[0]["name"].value;
     var seats = document.forms[0]["numSeats"].value;
@@ -18,6 +41,8 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     {
         alert("Booking for " + name + " saved.");
 
+        var key = GetNextBookingId();
+
         // store details as bookings object
         bookings = {
             "name": name,
@@ -28,7 +53,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
         };
 
         // store booking to local storage
-        var key = phone;
+        // var key = bookingId;
         window.localStorage.setItem(key, JSON.stringify(bookings));
         $(".form-input").val('');
 
@@ -79,6 +104,8 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
         $('#bookingDateEdit').val(bookingInfo.date);
         $('#bookingTimeEdit').val(bookingInfo.time);
         $('#numSeatsEdit').val(bookingInfo.seats);
+
+        window.sessionStorage.setItem("bookingKey", theKey);
     });
 }
 
@@ -108,7 +135,9 @@ function UpdateBookingToStorage() {
             "time": time
         };
 
-        var key = phone;
+        var key = window.sessionStorage.getItem("bookingKey");
+
+        // var key = phone;
 
         window.localStorage.setItem(key, JSON.stringify(bookings));
         $("input").val('');
@@ -199,28 +228,6 @@ function StartDateTimeFilter() { // Filters bookings by date and time
     }
 }
 
-
-// function StartDateFilter() {
-// // Filters bookings by date
-// $("#dateFilter").on("input", function () {
-//     var value = $(this).val();
-//     $("table tbody tr").filter(function () {
-//         $(this).toggle($(this).text().indexOf(value) > -1)
-//     });
-// });
-
-// }
-
-// function StartTimeFilter() {
-//     // Filters bookings by time
-//     $("#timeFilter").on("input", function () {
-//         var value = $(this).val();
-//         $("table tbody tr").filter(function () {
-//             $(this).toggle($(this).text().indexOf(value) > -1)
-//         });
-//     });
-// }
-
 function ClearDateTimeFilters() {
     $('#dateFilter').val('');
     $('#timeFilter').val('');
@@ -235,13 +242,11 @@ function ClearBookingForm() {
     $('.form-input').val('');
 }
 
-
-
 function AddTables() { 
 
     // this parses locally stored data back as an object and displays it in HTML table format
 
-    var validBookingKey = /^\d{10}$/;
+    var validBookingKey = /^[0-9]/;
       
     for (var i = 0, length = localStorage.length; i < length; i++) {
         let tableContent = "";
@@ -262,8 +267,8 @@ function AddTables() {
                         <td>${bookingInfo.phone}</td>
                         <td>${bookingInfo.date}</td>
                         <td>${bookingInfo.time}</td>
-                        <td id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button site-button-cancel" onclick="RemoveBooking('${bookingInfo.phone}')"><i class="far fa-trash-alt"></i>   Remove</button></td>
-                        <td id="modifybutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="ModifyBooking('${bookingInfo.phone}')"><i class="fas fa-user-edit"></i>   Modify</button></td>
+                        <td id="cancelbutton"><button id="${key}" type="button" class="site-button site-button-cancel" onclick="RemoveBooking('${key}')"><i class="far fa-trash-alt"></i>   Remove</button></td>
+                        <td id="modifybutton"><button id="${key}" type="button" class="site-button" onclick="ModifyBooking('${key}')"><i class="fas fa-user-edit"></i>   Modify</button></td>
                         `;
 
         var tablesDiv = document.createElement("tr"); // adds new row to the page to place the tables
@@ -288,18 +293,6 @@ function RemoveBooking(theKey) {
     }
 
     
-}
-
-function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
-
-    $('#page-wrapper').load('modifyBooking.html', function () {
-        var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
-        $('#nameEdit').val(bookingInfo.name);
-        $('#phoneEdit').val(bookingInfo.phone);
-        $('#bookingDateEdit').val(bookingInfo.date);
-        $('#bookingTimeEdit').val(bookingInfo.time);
-        $('#numSeatsEdit').val(bookingInfo.seats);
-    });
 }
 
 function CheckIfWithinOpeningTimes(timeInput, dateInput) { // validates that proposed booking time is within opening hours for specified date
@@ -353,7 +346,6 @@ function CheckValidDate(userDate) {
     if (key === null) {
         return false;
     }
-    
 
     else if (key.open == "" && key.close == "") {
         return false;
