@@ -1,6 +1,6 @@
 ﻿$(document).ready(function () {    
 
-    $('#book').click(function () {
+    $('#book').off().click(function () {
 
         $('#page-wrapper').load('book.html');
 
@@ -9,7 +9,7 @@
         
     })
 
-    $('#bookHomeScr').click(function () {
+    $('#bookHomeScr').off().click(function () {
 
         $('#page-wrapper').load('book.html');
 
@@ -18,7 +18,7 @@
 
     })
 
-    $('#index').click(function () {
+    $('#index').off().click(function () {
         $('#page-wrapper').load('indexPanel.html');
 
         RemoveActive();
@@ -26,25 +26,23 @@
 
     })
 
-    $('#viewbookings').click(function () {
+    $('#viewbookings').off().click(function () {
 
         $('#page-wrapper').load('viewBookings.html');
-
 
         RemoveActive();
         UpdateActive('#viewbookings');
     })
 
-    $('#viewbookingsHomeScr').click(function () {
+    $('#viewbookingsHomeScr').off().click(function () {
 
         $('#page-wrapper').load('viewBookings.html');
-
 
         RemoveActive();
         UpdateActive('#viewbookings');
     })
 
-    $('#tables').click(function () {
+    $('#tables').off().click(function () {
 
         $('#page-wrapper').load('tables.html');
 
@@ -53,7 +51,7 @@
         UpdateActive('#tables');
     })
 
-    $('#tablesHomeScr').click(function () {
+    $('#tablesHomeScr').off().click(function () {
 
         $('#page-wrapper').load('tables.html');
 
@@ -62,7 +60,7 @@
         UpdateActive('#tables');
     })
 
-    $('#openingtimes').click(function () {
+    $('#openingtimes').off().click(function () {
 
         $('#page-wrapper').load('openingTimes.html');
 

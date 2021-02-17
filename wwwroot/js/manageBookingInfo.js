@@ -1,11 +1,12 @@
 ﻿var bookings = {};
+var url = "http://localhost:5000/api/bookings";
 
-function GetBookingDetails() { // currently stores booking data locally as an object
+async function GetBookingDetails() { // currently stores booking data locally as an object
     var name = document.forms[0]["name"].value;
     var seats = document.forms[0]["numSeats"].value;
     var phone = document.forms[0]["phone"].value;
     var date = document.forms[0]["bookingDate"].value;
-    var time = document.forms[0]["bookingTime"].value;
+    var time = document.forms[0]["bookingTime"].value;   
 
     var validPhoneNo = /^\d{10}$/;
     var validPhone = false;
@@ -20,16 +21,35 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
 
         // store details as bookings object
         bookings = {
-            "name": name,
-            "seats": seats,
-            "phone": phone,
-            "date": date,
-            "time": time
+            "Id": 0,
+            "Name": name,
+            "Seats": seats,
+            "Phone": phone,
+            "Date": date,
+            "Time": time
         };
 
         // store booking to local storage
-        var key = phone;
-        window.localStorage.setItem(key, JSON.stringify(bookings));
+
+        // !!! --- This part will have to change with a C# backend.
+        
+
+            try {
+                await fetch(url, {
+                    method: "POST",
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(bookings)
+                });
+            }
+            catch (ex) {
+                console.log(ex);
+                throw "Failed to post";            
+            }           
+        
+        // var key = phone;
+        // window.localStorage.setItem(key, JSON.stringify(bookings));
+        // ---
+
         $(".form-input").val('');
 
         return true;
@@ -70,19 +90,7 @@ function GetBookingDetails() { // currently stores booking data locally as an ob
     }
 }
 
-function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
-
-    $('#page-wrapper').load('modifyBooking.html', function () {
-        var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
-        $('#nameEdit').val(bookingInfo.name);
-        $('#phoneEdit').val(bookingInfo.phone);
-        $('#bookingDateEdit').val(bookingInfo.date);
-        $('#bookingTimeEdit').val(bookingInfo.time);
-        $('#numSeatsEdit').val(bookingInfo.seats);
-    });
-}
-
-function UpdateBookingToStorage() {
+async function UpdateBookingToStorage() {
     var name = document.forms[0]["nameEdit"].value;
     var seats = document.forms[0]["numSeatsEdit"].value;
     var phone = document.forms[0]["phoneEdit"].value;
@@ -100,17 +108,25 @@ function UpdateBookingToStorage() {
         alert("Booking for " + name + " updated.");
 
         // store details as bookings object
+        var key = window.sessionStorage.getItem("BOOKING_ID");
+
         bookings = {
-            "name": name,
-            "seats": seats,
-            "phone": phone,
-            "date": date,
-            "time": time
+            "Id": parseInt(key),
+            "Name": name,
+            "Seats": seats,
+            "Phone": phone,
+            "Date": date,
+            "Time": time
         };
 
-        var key = phone;
+        await fetch(url + "/" + parseInt(key), {
+            method: "PUT",
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bookings)
+        }); 
 
-        window.localStorage.setItem(key, JSON.stringify(bookings));
+        // ---
+
         $("input").val('');
         
         BackToBookings();
@@ -199,28 +215,6 @@ function StartDateTimeFilter() { // Filters bookings by date and time
     }
 }
 
-
-// function StartDateFilter() {
-// // Filters bookings by date
-// $("#dateFilter").on("input", function () {
-//     var value = $(this).val();
-//     $("table tbody tr").filter(function () {
-//         $(this).toggle($(this).text().indexOf(value) > -1)
-//     });
-// });
-
-// }
-
-// function StartTimeFilter() {
-//     // Filters bookings by time
-//     $("#timeFilter").on("input", function () {
-//         var value = $(this).val();
-//         $("table tbody tr").filter(function () {
-//             $(this).toggle($(this).text().indexOf(value) > -1)
-//         });
-//     });
-// }
-
 function ClearDateTimeFilters() {
     $('#dateFilter').val('');
     $('#timeFilter').val('');
@@ -237,23 +231,20 @@ function ClearBookingForm() {
 
 
 
-function AddTables() { 
+async function AddTables() { 
 
     // this parses locally stored data back as an object and displays it in HTML table format
 
-    var validBookingKey = /^\d{10}$/;
-      
-    for (var i = 0, length = localStorage.length; i < length; i++) {
+    // !!! --- This whole segment will have to change with a C# backend.   
+
+    var raw = await fetch(url);
+    var data = await raw.json();
+ 
+    for (var i = 0, length = data.length; i < length; i++) {
         let tableContent = "";
-        var isBooking = false;
-        var key = localStorage.key(i);
-
-        if (key.match(validBookingKey)) {
-            isBooking = true;
-        }
-
-        if (isBooking) {
-            var bookingInfo = JSON.parse(localStorage[key]);
+        var currentBooking = data[i];
+         
+        var bookingInfo = currentBooking;
 
         // Cleaner way of storing/displaying bookings: only one row per booking rather than one table
         tableContent += `
@@ -262,45 +253,79 @@ function AddTables() {
                         <td>${bookingInfo.phone}</td>
                         <td>${bookingInfo.date}</td>
                         <td>${bookingInfo.time}</td>
-                        <td id="cancelbutton"><button id="${bookingInfo.phone}" type="button" class="site-button site-button-cancel" onclick="RemoveBooking('${bookingInfo.phone}')"><i class="far fa-trash-alt"></i>   Remove</button></td>
-                        <td id="modifybutton"><button id="${bookingInfo.phone}" type="button" class="site-button" onclick="ModifyBooking('${bookingInfo.phone}')"><i class="fas fa-user-edit"></i>   Modify</button></td>
+                        <td id="cancelbutton"><button id="${bookingInfo.id}" type="button" class="site-button site-button-cancel" onclick="RemoveBooking('${bookingInfo.id}')"><i class="far fa-trash-alt"></i>   Remove</button></td>
+                        <td id="modifybutton"><button id="${bookingInfo.id}" type="button" class="site-button" onclick="ModifyBooking('${bookingInfo.id}')"><i class="fas fa-user-edit"></i>   Modify</button></td>
                         `;
 
         var tablesDiv = document.createElement("tr"); // adds new row to the page to place the tables
         tablesDiv.innerHTML = tableContent; // adds table HTML
         document.getElementById("bookingData").appendChild(tablesDiv); // adds to page
-        }
-
         
+
+      // ---  
 
     }
 }
 
 
 // removes a booking from storage when cancelled
-function RemoveBooking(theKey) { 
-    var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
+async function RemoveBooking(theKey) { 
+
+    var raw = await fetch(url);
+    var data = await raw.json();
+
+    for (i = 0; i < data.length; i++) {
+        var current = data[i];
+        if (current.id == theKey) {
+            var bookingInfo = current;
+        }
+    } 
+
+    
 
     if (confirm("Are you sure you want to remove booking for " + bookingInfo.name + "?")) {
         alert("Booking for " + bookingInfo.name + " removed.");
-        window.localStorage.removeItem(theKey);
-        $('#page-wrapper').load('viewBookings.html');
+
+        // !!! --- This part will have to change with a C# backend.
+        await fetch(url + "/" + theKey, {
+            method: "DELETE"
+        });
+        // ---
+
+        
     }
 
+    $('#page-wrapper').load('viewBookings.html');
     
 }
 
-function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
+async function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
 
-    $('#page-wrapper').load('modifyBooking.html', function () {
-        var bookingInfo = JSON.parse(window.localStorage.getItem(theKey));
+    $('#page-wrapper').load('modifyBooking.html', async function () {
+
+        // !!! --- This part will have to change with a C# backend.
+
+        var raw = await fetch(url);
+        var data = await raw.json();
+
+        for (i = 0; i < data.length; i++) {
+            var current = data[i];
+            if (current.id == theKey) {
+                var bookingInfo = current;
+            }
+        }        
+        
         $('#nameEdit').val(bookingInfo.name);
         $('#phoneEdit').val(bookingInfo.phone);
         $('#bookingDateEdit').val(bookingInfo.date);
         $('#bookingTimeEdit').val(bookingInfo.time);
         $('#numSeatsEdit').val(bookingInfo.seats);
+
+        window.sessionStorage.setItem("BOOKING_ID", theKey);
+        //
     });
 }
+
 
 function CheckIfWithinOpeningTimes(timeInput, dateInput) { // validates that proposed booking time is within opening hours for specified date
     var day = GetBookingDay(dateInput);
@@ -353,7 +378,6 @@ function CheckValidDate(userDate) {
     if (key === null) {
         return false;
     }
-    
 
     else if (key.open == "" && key.close == "") {
         return false;
