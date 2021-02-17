@@ -79,4 +79,5 @@ function RemoveActive()
     var items = $('.active');
 
     items.removeClass("active");
+    
 }

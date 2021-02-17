@@ -384,4 +384,5 @@ function CheckValidDate(userDate) {
     }
 
     else return true;
+    
 }

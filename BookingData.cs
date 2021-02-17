@@ -64,7 +64,7 @@ namespace management_system
         {
             newBooking.Id = GetNextBookingId();
             bookings.Add(newBooking);
-            WriteBookings();
+            WriteBookings();           
         }
 
         public static void UpdateBooking(int bookingID, Booking bookingToEdit)

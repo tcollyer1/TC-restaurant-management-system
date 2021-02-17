@@ -7,6 +7,7 @@ using management_system.Models;
 
 namespace management_system.Controllers
 {
+    
     [Route("api/bookings")]
     [ApiController]
     public class BookingController : ControllerBase
