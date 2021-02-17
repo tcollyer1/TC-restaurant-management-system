@@ -1,7 +1,7 @@
 ﻿var bookings = {};
 var url = "http://localhost:5000/api/bookings";
 
-async function GetBookingDetails() { // currently stores booking data locally as an object
+async function GetBookingDetails() { // currently stores booking data in JSON format to a .csv file
     var name = document.forms[0]["name"].value;
     var seats = document.forms[0]["numSeats"].value;
     var phone = document.forms[0]["phone"].value;
@@ -21,7 +21,7 @@ async function GetBookingDetails() { // currently stores booking data locally as
 
         // store details as bookings object
         bookings = {
-            "Id": 0,
+            "Id": 0, // temp ID value. This is calculated in the backend
             "Name": name,
             "Seats": seats,
             "Phone": phone,
@@ -29,26 +29,13 @@ async function GetBookingDetails() { // currently stores booking data locally as
             "Time": time
         };
 
-        // store booking to local storage
+        // store booking to bookings.csv
 
-        // !!! --- This part will have to change with a C# backend.
-        
-
-            try {
                 await fetch(url, {
                     method: "POST",
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(bookings)
-                });
-            }
-            catch (ex) {
-                console.log(ex);
-                throw "Failed to post";            
-            }           
-        
-        // var key = phone;
-        // window.localStorage.setItem(key, JSON.stringify(bookings));
-        // ---
+                });     
 
         $(".form-input").val('');
 
@@ -124,8 +111,6 @@ async function UpdateBookingToStorage() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(bookings)
         }); 
-
-        // ---
 
         $("input").val('');
         
@@ -229,13 +214,14 @@ function ClearBookingForm() {
     $('.form-input').val('');
 }
 
-
+// $("#bookingSubmit").on("click", function(e) {
+//     e.preventDefault();
+//     return GetBookingDetails();
+// });
 
 async function AddTables() { 
 
-    // this parses locally stored data back as an object and displays it in HTML table format
-
-    // !!! --- This whole segment will have to change with a C# backend.   
+    // this parses stored data back as a JSON object and displays it in HTML table format
 
     var raw = await fetch(url);
     var data = await raw.json();
@@ -260,10 +246,6 @@ async function AddTables() {
         var tablesDiv = document.createElement("tr"); // adds new row to the page to place the tables
         tablesDiv.innerHTML = tableContent; // adds table HTML
         document.getElementById("bookingData").appendChild(tablesDiv); // adds to page
-        
-
-      // ---  
-
     }
 }
 
@@ -281,29 +263,21 @@ async function RemoveBooking(theKey) {
         }
     } 
 
-    
-
     if (confirm("Are you sure you want to remove booking for " + bookingInfo.name + "?")) {
         alert("Booking for " + bookingInfo.name + " removed.");
 
-        // !!! --- This part will have to change with a C# backend.
         await fetch(url + "/" + theKey, {
             method: "DELETE"
         });
-        // ---
-
-        
     }
 
     $('#page-wrapper').load('viewBookings.html');
     
 }
 
-async function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
+function ModifyBooking(theKey) { // modifies selected booking information, filling in HTML form
 
     $('#page-wrapper').load('modifyBooking.html', async function () {
-
-        // !!! --- This part will have to change with a C# backend.
 
         var raw = await fetch(url);
         var data = await raw.json();
@@ -322,7 +296,6 @@ async function ModifyBooking(theKey) { // modifies selected booking information,
         $('#numSeatsEdit').val(bookingInfo.seats);
 
         window.sessionStorage.setItem("BOOKING_ID", theKey);
-        //
     });
 }
 
