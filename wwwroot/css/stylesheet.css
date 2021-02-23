@@ -56,13 +56,13 @@ h3 {
 }
 
     h3 a {
-        color: rgb(228, 110, 15);
+        /* color: rgb(228, 110, 15); */
+        color: #ff7f44;
         -webkit-transition: color 0.3s;
         transition: color 0.5s;
     }
 
         h3 a:hover {
-            /* color: #cc5510; */
             color:rgb(255, 239, 219)
         }
 
@@ -88,7 +88,7 @@ p {
 
 .sidenav-rounded {
     border-radius: 0px 0px 50px 0px;
-    height: 70%; /*delete*/
+    height: 70%;
 }
 
 #pageDescriptions {
@@ -97,15 +97,10 @@ p {
 
 #page-wrapper {
     width: 75%;
-    /* height: 100vh; */
     height: calc(100% - 50px);
     margin: 0 auto;
     margin-top: 55px;
-    /* margin-bottom: 50px; delete if needed */
     overflow: auto;
-    /* padding-bottom: 50px; */
-    /*margin-bottom: 100px;*/
-    /*padding-bottom: 50px;*/ /*Was 10px*/
 }
 
 #page-content {
@@ -250,10 +245,12 @@ nav ul li {
 @keyframes slideInAnimation {
     0% {
         transform: translateX(-40%);
+        opacity: 0;
     }
 
     100% {
         transform: translateX(0);
+        opacity: 1;
     }
 
 }
@@ -280,27 +277,41 @@ table {
     margin: 0 auto;
     color: black;
     border-collapse: collapse;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.50);
     font-size: 15px;
     width: 50%;
     background-color: white;
 }
 
-    table td {
-        padding: 7px 9px;
-        border-bottom: 1px solid #ffc8a8;
-        /* border: 1px solid orange; */
-    }
+table th {
+    /* border: 1px solid orange; */
+    padding: 7px 9px;
+    background-color: #ff7f44;
+    color: white;
+}
 
-    table tr:nth-of-type(even) {
-        background-color: #ffdcc7;
-    }
+table td {
+    color: black;
+    padding: 7px 9px;    
+    border-bottom: 1px solid #ffc8a8;
+}
 
-    table th {
-        /* border: 1px solid orange; */
-        padding: 7px 9px;
-        background-color: #ff7f44;
-        color: white;
-    }
+/* table tr:nth-of-type(odd) {
+    background-color: #000000d7;
+} */
+
+table tr:nth-of-type(even) {
+    background-color: #ffdcc7;
+    /* background-color: #6d2600; */
+}
+
+table tr:last-of-type {
+    border-bottom: 4px solid #ff7f44;
+}
+
+    
 
 table #cancelbutton {
     text-align: center;

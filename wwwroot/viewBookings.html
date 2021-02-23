@@ -32,13 +32,13 @@
     </div> <br />
 
     <div class="row filter-padding">
-        <button id="clearDateTimeFilters" type="button" class="site-button" onclick="ClearDateTimeFilters()">Clear filters</button>
+        <button id="clearDateTimeFilters" type="button" class="site-button site-button-cancel" onclick="ClearDateTimeFilters()">Clear filters</button>
         <button id="applyDateTimeFilters" type="button" class="site-button" onclick="StartDateTimeFilter()">Apply filters</button>
     </div> <br />
     
      
     <div id="bookingsTable">
-               <p><input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a specific booking ..." onclick="StartSearch()" /> <br /><br /></p>
+               <p><input class="search-field" type="text" id="bookingSearchBar" placeholder="Search for a specific booking ..." onclick="StartSearch()" /> <button id="ClearSearch" class="site-button site-button-cancel" onclick="ClearSearchField()"><i class="fas fa-times"></i> Clear</button> <br /><br /></p>
                <table class="datatables-table" id="allBookings">
                    <thead>
                        <tr>
