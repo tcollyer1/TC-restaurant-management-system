@@ -27,6 +27,12 @@
 
             <label for="numSeats">Number of seats: </label><br />
             <input type="number" class="form-input" min="1" max="6" id="numSeats" name="numSeats" placeholder="1-6" /><br /><br />
+
+            <label for="selectTable">Select a table: </label> <br />
+            <select id="selectTable" class="form-select"> 
+                <!-- Options dynamically added by JS here. -->
+            </select> <button id="activateSelect" type="button" class="site-button site-button-secondary" onclick="FillInTableSelect()"><i class="far fa-eye"></i> Show available tables</button>
+            
         </div>
 
         <div class="col-md-12">

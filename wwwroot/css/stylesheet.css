@@ -203,18 +203,35 @@ nav ul li {
         background-color: #d65c5c;
     } 
 
+.site-button-secondary {
+    background-color: #fadb53;
+    color: black;
+}
+
+.site-button-secondary:hover {
+    background-color: #fbeb8b;
+}
+
+select {
+    padding: 2px;
+}
+
+#selectTable, #selectTableEdit {
+    display: none;
+}
+
     #refreshSection {
         text-align: right;
         font-family: 'Segoe UI';
         padding-right: 80px;
     }
 
-#modify-opening-times {
+#modify-opening-times, #AddATable {
     font-family: 'Segoe UI';
     margin-bottom: 50px;
 }
 
-#customer-info, #modifyTimes {
+#customer-info, #modifyTimes, #EnterTableSeats, #tableEdit {
     width: 100%;
     text-align: center;
     margin-bottom: 50px;    
@@ -323,14 +340,14 @@ table #cancelbutton {
         vertical-align: middle;
     }
 
-#bookingslist {
+#bookingslist, #tablesList {
     margin: 0 auto;
     height: 100%;
     width: 100%;
     margin-bottom: 50px;
 }
 
-#bookingsTable {
+#bookingsTable, #viewtables {
     padding-bottom: 50px;
 }
 
@@ -344,6 +361,10 @@ label {
 
 .form-input {
     width: 30%;
+}
+
+.form-select {
+    width: 15%;
 }
 
 .small-form-input {

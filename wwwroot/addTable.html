@@ -1,0 +1,23 @@
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+<script src="js/tables.js"></script>
+
+<div id="AddTable">
+    <h2>Add a table</h2>
+</div>
+
+<div id="EnterTableSeats" class="fade-content">
+    <form id="tabledetails" class="row">
+        <div class="col-md-12 form-group">
+            <br />
+            <label for="tableseats">Seats:</label><br />
+            <input type="number" min="1" max="6" class="form-input" id="tableseats" name="tableseats" placeholder="1-6" /><br /><br />
+        </div>
+
+        <div class="col-md-12">
+            <button id="tableCancel" class="site-button site-button-cancel" type="button" onclick="BackToTables()"><i class="fas fa-times"></i> Cancel</button>
+            <button id="tableSubmit" class="site-button" type="button" onclick="return AddNewTable()"><i class="fas fa-check"></i> Submit</button>
+        </div> <br/> <br/>
+
+    </form>
+
+</div>

@@ -1,0 +1,24 @@
+<script src="js/index.js"></script>
+<script src="js/tables.js"></script>
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+    
+<div id="modify-table">
+    <h2>Edit a table</h2>
+    <p class="description">Change the number of seats for this table.</p>
+</div>
+
+<div id="tableEdit" class="slide-content">
+    <form id="table-edit" class="row">
+        <div class="col-md-12 form-group">
+            <br />
+            <label for="seatsEdit">Seats:</label><br />
+            <input type="number" class="form-input" min="1" max="6" id="seatsEdit" name="seatsEdit" placeholder="1-6" /><br /><br />
+        </div>
+
+        <div class="col-md-12">
+            <button id="cancelTableEdit" class="site-button site-button-cancel" type="button" onclick="BackToTables()"><i class="fas fa-times"></i> Cancel</button>
+            <button id="editTableSubmit" class="site-button" type="button" onclick="return UpdateTableToStorage()"><i class="fas fa-check"></i> Update</button>
+        </div>
+
+    </form>
+</div>

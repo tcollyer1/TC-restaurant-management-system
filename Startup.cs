@@ -26,7 +26,7 @@ namespace management_system
 
             app.UseDefaultFiles();
             app.UseStaticFiles();
-            
+
             app.UseCors(policy => policy.WithOrigins("https://localhost:44338").AllowAnyHeader().AllowAnyMethod()); // for regular Visual Studio
             // app.UseCors(policy => policy.WithOrigins("http://127.0.0.1:5500").AllowAnyHeader().AllowAnyMethod()); // for Visual Studio Code
 
@@ -43,7 +43,8 @@ namespace management_system
                 endpoints.MapControllers();
             });
 
-            BookingData.Initialize();
+            BookingData.InitializeBookings();
+            TableData.InitializeTables();
         }
     }
 }

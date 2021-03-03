@@ -26,6 +26,11 @@
 
             <label for="numSeatsEdit">Number of seats: </label><br />
             <input type="number" class="form-input" min="1" max="6" id="numSeatsEdit" name="numSeatsEdit" placeholder="1-6" /><br /><br />
+
+            <label for="selectTableEdit">Select a table: </label> <br />
+            <select id="selectTableEdit" class="form-select"> 
+                <!-- <option value = "1">one</option> -->
+            </select> <button id="activateSelectEdit" type="button" class="site-button site-button-secondary" onclick="FillInTableSelectEdit()"><i class="far fa-eye"></i> Show available tables</button>
         </div>
 
         <div class="col-md-12">

@@ -1,13 +1,9 @@
 ﻿using System.Collections.Generic;
-using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using management_system.Models;
 
 namespace management_system.Controllers
 {
-    
     [Route("api/bookings")]
     [ApiController]
     public class BookingController : ControllerBase

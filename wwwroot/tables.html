@@ -1,4 +1,31 @@
-﻿<div id="manageTables">
+﻿<script src="js/tables.js"></script>
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+
+<div id="manageTables">
     <h2>Manage tables</h2>
     <p class="description">View and add/remove tables here.</p>
+</div>
+
+<div id="tablesList" class="fade-content">
+    <div id="viewtables">        
+        <table class="datatables-table" id="allTables">
+            <thead>
+                <tr>
+                    <th>Table No.</th>
+                    <th>Seats</th>                   
+                    <th>Remove</th>
+                    <th>Modify</th>
+                </tr>
+            </thead>
+            <tbody id="tablesData">
+                <!-- Table data added here dynamically by JS -->
+            </tbody>
+     </table> <br /> <br />
+
+     <p><button id="AddATable" class="site-button" onclick="OpenAddTablePage()"><i class="fas fa-plus"></i> Add a table</button></p>
+</div>
+
+<script>
+    AddTablesData();
+</script>
 </div>
