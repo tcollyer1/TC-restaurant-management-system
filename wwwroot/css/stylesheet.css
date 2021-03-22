@@ -55,14 +55,14 @@ h3 {
     padding-top: 40px;
 }
 
-    h3 a {
+    h3 a, #logInLink, #logInLink2 {
         /* color: rgb(228, 110, 15); */
         color: #ff7f44;
         -webkit-transition: color 0.3s;
         transition: color 0.5s;
     }
 
-        h3 a:hover {
+        h3 a:hover, #logInLink:hover, #logInLink2:hover {
             color:rgb(255, 239, 219)
         }
 
@@ -231,7 +231,7 @@ select {
     margin-bottom: 50px;
 }
 
-#customer-info, #modifyTimes, #EnterTableSeats, #tableEdit {
+#customer-info, #customer-info-edit, #modifyTimes, #EnterTableSeats, #tableEdit, #loginDetails {
     width: 100%;
     text-align: center;
     margin-bottom: 50px;    
@@ -272,11 +272,11 @@ select {
 
 }
 
-#customer-info-edit {
+/* #customer-info-edit {
     width: 100%;
     text-align: center;
     padding-bottom: 50px;
-}
+} */
 
 .transparent-bg {
     background-color: rgba(22, 22, 22, 0.842);

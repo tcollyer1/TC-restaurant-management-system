@@ -1,0 +1,26 @@
+<script src="js/login.js"></script>
+<script src="js/index.js"></script>
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+
+<div id="loginPage">
+    <h2>Log in</h2>
+    <p class="description">Enter your username and password.</p>
+</div>
+
+<div id="loginDetails" class="slide-content">
+    <form id="usernamepassword" class="row">
+        <div class="col-md-12 form-group">
+            <br />
+            <label for="username">Username:</label><br />
+            <input type="text" class="form-input" id="username" name="username" /><br /><br />
+
+            <br />
+            <label for="password">Password:</label><br />
+            <input type="password" class="form-input" id="password" name="password" /><br />
+        </div>
+
+        <div class="col-md-12">
+            <button id="loginSubmit" class="site-button" type="button" onclick="return LogInUser()"><i class="fas fa-sign-in-alt"></i> Log in</button>
+        </div> <br /><br />
+    </form>
+</div>

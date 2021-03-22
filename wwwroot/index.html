@@ -13,6 +13,7 @@
             crossorigin="anonymous"></script>
     <script src="js/index.js"></script>
     <script src="js/openingTimes.js"></script>
+    <script src="js/login.js"></script>
     <script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
 
     <!--Bootstrap CSS-->
@@ -28,7 +29,7 @@
             </div>
             <ul class="navbar-nav">
                 <li class="nav-item"><a class="nav-link active" href="#" id="index"><i class="fas fa-home"></i>   Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i>   Log out</a></li>
+                <li class="nav-item"><a class="nav-link" href="#" id="logIn"><i class="fas fa-sign-in-alt"></i>   Log in</a></li>
             </ul>
         </nav>
     </div>
@@ -56,20 +57,23 @@
         <div id="page-wrapper" class="transparent-bg">
             <!--<h2 id="welcomeMsg" onload="GetUserName()"></h2>-->
             <h2>Welcome</h2>
-            <p class="description">Select an option by hovering over the left or selecting an option below.</p> 
+            <p class="description">Please <a href="#" id="logInLink">log in</a> to start using the site.</p> 
 
             <div id="pageDescriptions" class="fade-content">
                 <div class="row">
                     <div class="col-md-4">
-                        <h3><a href="#" id="bookHomeScr">Create bookings</a></h3>
+                        <!-- <h3><a href="#" id="bookHomeScr">Create bookings</a></h3> -->
+                        <h3>Create bookings</a></h3>
                         <p>With a simple booking form, you can create a booking for customers, storing necessary details.</p>
                     </div>
                     <div class="col-md-4">
-                        <h3><a href="#" id="viewbookingsHomeScr">Manage bookings</a></h3>
+                        <!-- <h3><a href="#" id="viewbookingsHomeScr">Manage bookings</a></h3> -->
+                        <h3>Manage bookings</a></h3>
                         <p>You can choose to view all bookings made on the system, search for specific ones, modify and remove bookings.</p>
                     </div>
                     <div class="col-md-4">
-                        <h3><a href="#" id="tablesHomeScr">Manage tables</a></h3>
+                        <!-- <h3><a href="#" id="tablesHomeScr">Manage tables</a></h3> -->
+                        <h3>Manage tables</a></h3>
                         <p>Tables can be added and allocated seats, removed and viewed here.</p>
                     </div>
                 </div>

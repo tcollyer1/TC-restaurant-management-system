@@ -73,7 +73,7 @@ function StoreOpeningTimes() { // stores all opening times in JS local storage s
 
         var currentDay = allTimes[x];
 
-        if ((currentDay.open != '' && currentDay.close == '') || (currentDay.open == '' && currentDay.close != '')) {
+        if ((currentDay.open != '' && currentDay.close == '') || (currentDay.open == '' && currentDay.close != '')) { // TODO: fix that an unfinished can be input; e.g. 12:--, with no minutes
             alert("One or more invalid opening times. Please enter either: both an opening AND closing time, or neither to indicate that the restaurant is closed.");
             return false;
         }

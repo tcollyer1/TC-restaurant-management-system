@@ -223,6 +223,9 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
         window.sessionStorage.setItem("originalDate", bookingInfo.date);
         window.sessionStorage.setItem("originalTime", bookingInfo.time);
         window.sessionStorage.setItem("originalTableNo", bookingInfo.table);
+
+        FillInTableSelectEdit();
+        
     });
 }
 
