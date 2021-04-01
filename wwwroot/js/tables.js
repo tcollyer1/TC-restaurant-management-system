@@ -64,22 +64,30 @@ async function AddTablesData() { // adds row to HTML table of all restaurant tab
 }
 
 function ModifyTable(tableNum) { // Allows user to change the number of seats at a table. (Maybe should only allow for seats to be increased so as not to make some bookings associated with that table potentially invalid?)
-    $('#page-wrapper').load('modifyTable.html', async function () {
+    var accountType = window.sessionStorage.getItem("accountType");
 
-        var raw = await fetch(url);
-        var data = await raw.json();
+    if (accountType == "owner") {
+        $('#page-wrapper').load('modifyTable.html', async function () {
 
-        for (i = 0; i < data.length; i++) {
-            var current = data[i];
-            if (current.tableNo == tableNum) {
-                var tableInfo = current;
+            var raw = await fetch(url);
+            var data = await raw.json();
+    
+            for (i = 0; i < data.length; i++) {
+                var current = data[i];
+                if (current.tableNo == tableNum) {
+                    var tableInfo = current;
+                }
             }
-        }
+    
+            $('#seatsEdit').val(tableInfo.seats);
+    
+            window.sessionStorage.setItem("TABLE_ID", tableNum); // stores ID of selected booking to be modified to be accessed by UpdateBookingToStorage()
+        });
+    }
 
-        $('#seatsEdit').val(tableInfo.seats);
-
-        window.sessionStorage.setItem("TABLE_ID", tableNum); // stores ID of selected booking to be modified to be accessed by UpdateBookingToStorage()
-    });
+    else alert("You don't have permission to modify table seats.");
+    
+    
 }
 
 async function UpdateTableToStorage() { // Store updated value to .csv
@@ -126,25 +134,33 @@ async function UpdateTableToStorage() { // Store updated value to .csv
 
 async function RemoveTable(tableNum) { // Removes a table from storage. (May potentially be an issue with bookings if they're matched with table numbers that no longer are on the system)
 
-    var raw = await fetch(url);
-    var data = await raw.json();
+    var accountType = window.sessionStorage.getItem("accountType");
 
-    for (i = 0; i < data.length; i++) {
-        var current = data[i];
-        if (current.tableNo == tableNum) {
-            var tableInfo = current;
+    if (accountType == "owner") {
+        var raw = await fetch(url);
+        var data = await raw.json();
+
+        for (i = 0; i < data.length; i++) {
+            var current = data[i];
+            if (current.tableNo == tableNum) {
+                var tableInfo = current;
+            }
         }
+
+        if (confirm("Are you sure you want to remove table " + tableInfo.tableNo + "?")) {
+            alert("Table " + tableInfo.tableNo + " removed.");
+
+            await fetch(url + "/" + tableNum, {
+                method: "DELETE"
+            });
+        }
+
+        $('#page-wrapper').load('tables.html');
     }
 
-    if (confirm("Are you sure you want to remove table " + tableInfo.tableNo + "?")) {
-        alert("Table " + tableInfo.tableNo + " removed.");
+    else alert("You don't have permission to remove tables.");
 
-        await fetch(url + "/" + tableNum, {
-            method: "DELETE"
-        });
-    }
-
-    $('#page-wrapper').load('tables.html');
+    
 }
 
 function BackToTables() {
@@ -152,5 +168,10 @@ function BackToTables() {
 }
 
 function OpenAddTablePage() {
-    $('#page-wrapper').load('addTable.html');
+    var accountType = window.sessionStorage.getItem("accountType");
+    if (accountType == "owner") {
+        $('#page-wrapper').load('addTable.html');
+    }
+
+    else alert("You don't have permission to add tables.");
 }

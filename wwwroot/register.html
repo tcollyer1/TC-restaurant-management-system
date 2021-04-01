@@ -1,0 +1,35 @@
+<script src="js/login.js"></script>
+<script src="https://kit.fontawesome.com/bff8b176ac.js" crossorigin="anonymous"></script>
+
+<div id="registrationPage">
+    <h2>Register</h2>
+    <p class="description">Create your account below.</p>
+</div>
+
+<div id="accountDetails" class="fade-content">
+    <form id="loginInfo" class="row">
+        <div class="col-md-12 form-group">
+            <br />
+            <label><b>I am:</b></label><br />
+            <label><input type="radio" id="owner" name="accountTypeSelection" value="owner" /> an owner</label>
+            <label><input type="radio" id="staff" name="accountTypeSelection" value="staff" /> staff member</label> <br /> <br />
+
+            <label for="accountFName">First name:</label><br />
+            <input type="text" class="form-input" id="accountFName" name="accountFName" /><br /> <br />
+
+            <label for="accountLName">Surname:</label><br />
+            <input type="text" class="form-input" id="accountLName" name="accountLName" /><br /> <br />
+
+            <label for="accountPwd">Password:</label><br />
+            <input type="password" class="form-input" id="accountPwd" name="accountPwd" /><br /><br />
+
+            <label for="cfmAccountPwd">Confirm password:</label><br />
+            <input type="password" class="form-input" id="cfmAccountPwd" name="cfmAccountPwd" /><br /><br />
+        </div>
+
+        <div class="col-md-12">
+            <button id="backToLoginBtn" class="site-button site-button-cancel" type="button" onclick="BackToLoginPage()"><i class="fas fa-times"></i> Cancel</button>
+            <button id="createAccountBtn" class="site-button" type="button" onclick="return CreateUserAccount()"><i class="fas fa-plus-circle"></i> Create account</button>
+        </div> <br /><br />
+    </form>
+</div>

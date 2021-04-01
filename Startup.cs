@@ -45,6 +45,7 @@ namespace management_system
 
             BookingData.InitializeBookings();
             TableData.InitializeTables();
+            AccountData.InitializeUsers();
         }
     }
 }

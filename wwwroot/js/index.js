@@ -1,5 +1,5 @@
 ﻿if (window.sessionStorage.getItem("isLoggedIn") === null) {
-    window.sessionStorage.setItem("isLoggedIn", false);
+    window.sessionStorage.setItem("isLoggedIn", false); // sets login status as false on startup (user isn't logged in)
 }
 
 // $('#page-wrapper').load('loggedInIndexPanel.html', function () {

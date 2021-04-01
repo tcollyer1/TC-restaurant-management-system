@@ -2,25 +2,34 @@ var keys = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", 
 
 function EditOpeningTimesPage() { // prefills any already-entered opening time details on any day on opening times modify page
 
-    $('#page-wrapper').load('modifyOpeningTimes.html', function () {
+    var accountType = window.sessionStorage.getItem("accountType");
 
-        var validOpeningTimesKey = /^[A-Za-z]+$/; // this separates the opening times from bookings in JS local storage. Bookings are stored (currently) with a numerical phone No. as key, opening times are stored by day name as key.
+    if (accountType == "owner") {
+        $('#page-wrapper').load('modifyOpeningTimes.html', function () {
 
-        for (var i = 0, length = localStorage.length; i < length; i++) {
-            var key = localStorage.key(i);
-            var isOpeningTimesEntry = false;
-
-            if (key.match(validOpeningTimesKey)) {
-                isOpeningTimesEntry = true;
+            var validOpeningTimesKey = /^[A-Za-z]+$/; // this separates the opening times from bookings in JS local storage. Bookings are stored (currently) with a numerical phone No. as key, opening times are stored by day name as key.
+    
+            for (var i = 0, length = localStorage.length; i < length; i++) {
+                var key = localStorage.key(i);
+                var isOpeningTimesEntry = false;
+    
+                if (key.match(validOpeningTimesKey)) {
+                    isOpeningTimesEntry = true;
+                }
+    
+                if (isOpeningTimesEntry) {
+                    var timesInfo = JSON.parse(window.localStorage.getItem(key));
+                    $('#' + key + 'Open').val(timesInfo.open);
+                    $('#' + key + 'Close').val(timesInfo.close);
+                }
             }
+        });
+    }
 
-            if (isOpeningTimesEntry) {
-                var timesInfo = JSON.parse(window.localStorage.getItem(key));
-                $('#' + key + 'Open').val(timesInfo.open);
-                $('#' + key + 'Close').val(timesInfo.close);
-            }
-        }
-    });
+    else {
+        alert("You don't have permission to edit opening times.");
+    }
+    
 
 }
 

@@ -55,14 +55,14 @@ h3 {
     padding-top: 40px;
 }
 
-    h3 a, #logInLink, #logInLink2 {
+    h3 a, #logInLink, #logInLink2, #createAccountLink {
         /* color: rgb(228, 110, 15); */
         color: #ff7f44;
         -webkit-transition: color 0.3s;
         transition: color 0.5s;
     }
 
-        h3 a:hover, #logInLink:hover, #logInLink2:hover {
+        h3 a:hover, #logInLink:hover, #logInLink2:hover, #createAccountLink:hover {
             color:rgb(255, 239, 219)
         }
 
@@ -231,7 +231,7 @@ select {
     margin-bottom: 50px;
 }
 
-#customer-info, #customer-info-edit, #modifyTimes, #EnterTableSeats, #tableEdit, #loginDetails {
+#customer-info, #customer-info-edit, #modifyTimes, #EnterTableSeats, #tableEdit, #loginDetails, #accountDetails {
     width: 100%;
     text-align: center;
     margin-bottom: 50px;    
@@ -365,6 +365,10 @@ label {
 
 .form-select {
     width: 15%;
+}
+
+.form-radio {
+    width: default;
 }
 
 .small-form-input {

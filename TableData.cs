@@ -49,10 +49,10 @@ namespace management_system
             return largest + 1;
         }
 
-        public static void AddTable(Table table) // Adds a table to the list to be written to the .csv
-        {
-            tables.Add(table);
-        }
+        // public static void AddTable(Table table) // Adds a table to the list to be written to the .csv
+        // {
+        //     tables.Add(table);
+        // }
 
         public static void AddTableToCsv(Table newTable) // Gets table data of new table and calls file writing function
         {
