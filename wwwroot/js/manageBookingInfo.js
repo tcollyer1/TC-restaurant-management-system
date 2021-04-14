@@ -76,7 +76,7 @@ async function UpdateBookingToStorage() { // Updates a booking entry in .csv whe
         phone = "0" + phone; // adds preceding 0 to phone number
     }
 
-    if (name && seats && phone && date && time && table && seats <= 6 && seats >= 1 && validPhone && CheckIfWithinOpeningTimes(time, date) && CheckValidDate(date)) {
+    if (name && seats && phone && date && time && table && seats <= 6 && seats >= 1 && validPhone && CheckIfWithinOpeningTimes(time, date) && CheckValidDate(date) /*&& CheckDateWithinRange(date)*/) {
         alert("Booking for " + name + " updated.");
 
         if (table == "original") {
@@ -124,8 +124,13 @@ async function UpdateBookingToStorage() { // Updates a booking entry in .csv whe
         }
         else alert("Restaurant is closed on a " + GetBookingDay(date) + ". Please select another date.");
 
-        return 0;
+        return false;
     }
+
+    //else if (CheckDateWithinRange(date) === false) {
+    //    alert("Invalid date: please book for a date no earlier than today and no later than 2 weeks in advance.");
+    //    return false;
+    //}
 
     else {
         alert("Invalid phone number");
@@ -200,14 +205,6 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
             }
         }
 
-        // adds existing chosen table to form, like the other inputs
-        var selectElement = document.getElementById("selectTableEdit");
-        var newOption = document.createElement("option");
-        newOption.text = `${bookingInfo.table}`;
-        newOption.value = "original";
-        selectElement.add(newOption);
-        $('#selectTableEdit').css('display', 'inline');
-
         var phoneEdit = (bookingInfo.phone).substring(1); // removes preceding 0 for modifying
 
         // adds existing booking data to form inputs to be modified
@@ -219,12 +216,25 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
 
         window.sessionStorage.setItem("BOOKING_ID", theKey); // stores ID of selected booking to be modified to be accessed by UpdateBookingToStorage()
 
+
         // Stores original date/time/table number to be accessed when editing a booking.
         window.sessionStorage.setItem("originalDate", bookingInfo.date);
         window.sessionStorage.setItem("originalTime", bookingInfo.time);
         window.sessionStorage.setItem("originalTableNo", bookingInfo.table);
 
-        FillInTableSelectEdit();
+
+        // adds existing chosen table to form, like the other inputs
+        if (CheckDateWithinRange(bookingInfo.date) === true) {
+            var selectElement = document.getElementById("selectTableEdit");
+            var newOption = document.createElement("option");
+            newOption.text = `${bookingInfo.table}`;
+            newOption.value = "original";
+            selectElement.add(newOption);
+            $('#selectTableEdit').css('display', 'inline');
+
+            FillInTableSelectEdit();
+        }
+ 
         
     });
 }
@@ -425,7 +435,7 @@ async function GetTables(userTime, userDate, userSeats) { // returns what tables
     var tablesRaw = await fetch(tablesUrl);
     var tableData = await tablesRaw.json();
 
-    if (userTime && userDate && userSeats && userSeats <= 6 && userSeats > 0 && CheckValidDate(userDate) && CheckIfWithinOpeningTimes(userTime, userDate)) {
+    if (userTime && userDate && userSeats && userSeats <= 6 && userSeats > 0 && CheckValidDate(userDate) && CheckDateWithinRange(userDate) && CheckIfWithinOpeningTimes(userTime, userDate)) {
         var tablesAvailable = await GetWhichTablesAreAvailable(userDate, userTime, userSeats, tableData);
         $('#selectTable').css('display', 'inline');
         $('#selectTableEdit').css('display', 'inline');
@@ -449,6 +459,11 @@ async function GetTables(userTime, userDate, userSeats) { // returns what tables
         }
         else alert("Restaurant is closed on a " + GetBookingDay(userDate) + ". Please select another date.");
 
+        return 0;
+    }
+
+    else if (CheckDateWithinRange(userDate) === false) {
+        alert("Invalid date: please book for a date no earlier than today and no later than 2 weeks in advance.");
         return 0;
     }
 
@@ -543,6 +558,32 @@ function CheckValidDate(userDate) {
         return false;
     }
 
-    else return true;
+    else {
+        
+        return true;
+    }
 
+}
+
+function CheckDateWithinRange(userDate) { // Checks entered booking date is between today's date and no more than 2 weeks in advance
+    var Year = userDate.split('-')[0];
+    var Month = userDate.split('-')[1];
+    var Day = userDate.split('-')[2];
+
+    console.log(Month);
+
+    var currentDay = new Date();
+    var maxDate = new Date();
+
+    currentDay = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate());
+    maxDate = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate() + 14);
+    proposedDay = new Date(Year, Month-1, Day);
+
+    if (proposedDay < currentDay || proposedDay > maxDate) {
+        return false;
+    }
+
+    else {
+        return true;
+    }
 }
