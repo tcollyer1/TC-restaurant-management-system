@@ -224,7 +224,7 @@ function ModifyBooking(theKey) { // modifies selected booking information, filli
 
 
         // adds existing chosen table to form, like the other inputs
-        if (CheckDateWithinRange(bookingInfo.date) === true) {
+        if (CheckDateWithinRange(bookingInfo.date, bookingInfo.time) === true) {
             var selectElement = document.getElementById("selectTableEdit");
             var newOption = document.createElement("option");
             newOption.text = `${bookingInfo.table}`;
@@ -435,7 +435,7 @@ async function GetTables(userTime, userDate, userSeats) { // returns what tables
     var tablesRaw = await fetch(tablesUrl);
     var tableData = await tablesRaw.json();
 
-    if (userTime && userDate && userSeats && userSeats <= 6 && userSeats > 0 && CheckValidDate(userDate) && CheckDateWithinRange(userDate) && CheckIfWithinOpeningTimes(userTime, userDate)) {
+    if (userTime && userDate && userSeats && userSeats <= 6 && userSeats > 0 && CheckValidDate(userDate) && CheckDateWithinRange(userDate, userTime) && CheckIfWithinOpeningTimes(userTime, userDate)) {
         var tablesAvailable = await GetWhichTablesAreAvailable(userDate, userTime, userSeats, tableData);
         $('#selectTable').css('display', 'inline');
         $('#selectTableEdit').css('display', 'inline');
@@ -462,7 +462,7 @@ async function GetTables(userTime, userDate, userSeats) { // returns what tables
         return 0;
     }
 
-    else if (CheckDateWithinRange(userDate) === false) {
+    else if (CheckDateWithinRange(userDate, userTime) === false) {
         alert("Invalid date: please book for a date no earlier than today and no later than 2 weeks in advance.");
         return 0;
     }
@@ -483,7 +483,7 @@ async function FillInTableSelect() { // Adds available tables to selection on bo
     GetTables(userTime, userDate, userSeats).then((availableTables) => {
         var selectElement = document.getElementById("selectTable");
 
-        if (availableTables != 0) {
+        if (availableTables != 0) { // 0 only if invalid date/time/seats
             for (i = 0; i < availableTables.length; i++) {
                 var newOption = document.createElement("option");
                 newOption.text = `${availableTables[i]}`;
@@ -491,8 +491,6 @@ async function FillInTableSelect() { // Adds available tables to selection on bo
             }
         }
     });
-
-    // $('#selectTable').css('display', 'inline');
 }
 
 async function FillInTableSelectEdit() { // Adds available tables to selection on modify booking form
@@ -565,7 +563,7 @@ function CheckValidDate(userDate) {
 
 }
 
-function CheckDateWithinRange(userDate) { // Checks entered booking date is between today's date and no more than 2 weeks in advance
+function CheckDateWithinRange(userDate, userTime) { // Checks entered booking date is between today's date and no more than 2 weeks in advance
     var Year = userDate.split('-')[0];
     var Month = userDate.split('-')[1];
     var Day = userDate.split('-')[2];
@@ -579,11 +577,20 @@ function CheckDateWithinRange(userDate) { // Checks entered booking date is betw
     maxDate = new Date(currentDay.getFullYear(), currentDay.getMonth(), currentDay.getDate() + 14);
     proposedDay = new Date(Year, Month-1, Day);
 
+    var currentTime = new Date();
+    var currentHour = currentTime.getHours();
+    var proposedHour = userTime.split(':')[0];
+
     if (proposedDay < currentDay || proposedDay > maxDate) {
         return false;
     }
 
     else {
-        return true;
+        if (proposedHour <= currentHour && proposedDay.toDateString() === currentDay.toDateString()) {
+            return false;
+        }
+        else {
+            return true;
+        } 
     }
 }

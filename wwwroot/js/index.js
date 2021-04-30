@@ -25,7 +25,7 @@ $(document).ready(function () {
             alert("Logging out..."); // TODO: ask the user if they're sure they want to log out
             window.sessionStorage.setItem("isLoggedIn", false);
             $('#logIn').html('<i class="fas fa-sign-in-alt"></i>   Log in');
-            $('#page-wrapper').load('indexPanel.html');
+            $('#page-wrapper').load('index2.html');
             RemoveActive();
             UpdateActive('#index');
         }
@@ -63,21 +63,21 @@ $(document).ready(function () {
 
         var isLoggedIn = window.sessionStorage.getItem("isLoggedIn");
 
-        if (isLoggedIn == "false") {
-            alert("You need to log in before you can access this content.")
-        }
-        else {
+        // if (isLoggedIn == "false") {
+            // alert("You need to log in before you can access this content.")
+        // }
+        // else {
             $('#page-wrapper').load('book.html');
             RemoveActive();
             UpdateActive('#book');
-        }
+        // }
     })
 
     $('#index').off().click(function () {
         var isLoggedIn = window.sessionStorage.getItem("isLoggedIn");
 
         if (isLoggedIn == "false") {
-            $('#page-wrapper').load('indexPanel.html');
+            $('#page-wrapper').load('index2.html');
 
             RemoveActive();
             UpdateActive('#index');
@@ -86,7 +86,7 @@ $(document).ready(function () {
         else {
             var username = window.sessionStorage.getItem("username");
 
-            $('#page-wrapper').load('loggedInIndexPanel.html', function () {
+            $('#page-wrapper').load('loggedInIndex2.html', function () {
                 $('#welcomeMsg').html("Welcome, " + username);
 
             });
@@ -94,9 +94,6 @@ $(document).ready(function () {
             RemoveActive();
             UpdateActive('#index');
         }
-
-            
-
     })
 
     $('#viewbookings').off().click(function () {

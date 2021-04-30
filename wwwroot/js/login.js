@@ -26,7 +26,7 @@ async function LogInUser() {
             window.sessionStorage.setItem("username", name);
             window.sessionStorage.setItem("accountType", accountType);
 
-            $('#page-wrapper').load('loggedInIndexPanel.html', function () {
+            $('#page-wrapper').load('loggedInIndex2.html', function () {
                 $('#welcomeMsg').html("Welcome, " + name);
             });
 

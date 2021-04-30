@@ -1,4 +1,4 @@
-var keys = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]; // key names for local storage
+var keys = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]; // key (day) names for local storage
 
 function EditOpeningTimesPage() { // prefills any already-entered opening time details on any day on opening times modify page
 
@@ -6,22 +6,12 @@ function EditOpeningTimesPage() { // prefills any already-entered opening time d
 
     if (accountType == "owner") {
         $('#page-wrapper').load('modifyOpeningTimes.html', function () {
-
-            var validOpeningTimesKey = /^[A-Za-z]+$/; // this separates the opening times from bookings in JS local storage. Bookings are stored (currently) with a numerical phone No. as key, opening times are stored by day name as key.
-    
             for (var i = 0, length = localStorage.length; i < length; i++) {
                 var key = localStorage.key(i);
-                var isOpeningTimesEntry = false;
-    
-                if (key.match(validOpeningTimesKey)) {
-                    isOpeningTimesEntry = true;
-                }
-    
-                if (isOpeningTimesEntry) {
-                    var timesInfo = JSON.parse(window.localStorage.getItem(key));
-                    $('#' + key + 'Open').val(timesInfo.open);
-                    $('#' + key + 'Close').val(timesInfo.close);
-                }
+                var timesInfo = JSON.parse(window.localStorage.getItem(key));
+
+                $('#' + key + 'Open').val(timesInfo.open);
+                $('#' + key + 'Close').val(timesInfo.close);
             }
         });
     }
@@ -29,16 +19,14 @@ function EditOpeningTimesPage() { // prefills any already-entered opening time d
     else {
         alert("You don't have permission to edit opening times.");
     }
-    
-
 }
-
 
 function BackToOpeningTimes() {
     $('#page-wrapper').load('openingTimes.html');
 }
 
-function StoreOpeningTimes() { // stores all opening times in JS local storage so far with key being the day name, as an object with properties open and close correlating to opening and closing times.
+// Stores all opening times in JS local storage with key being the day name, value being an object with properties for opening and closing hours
+function StoreOpeningTimes() { 
     var mondayTimes = {
         "open": document.forms[0]["MondayOpen"].value,
         "close": document.forms[0]["MondayClose"].value,
@@ -74,11 +62,9 @@ function StoreOpeningTimes() { // stores all opening times in JS local storage s
         "close": document.forms[0]["SundayClose"].value,
     };
 
-    let allTimes = [mondayTimes, tuesdayTimes, wedsTimes, thursTimes, fridayTimes, satTimes, sunTimes];
+    let allTimes = [sunTimes, mondayTimes, tuesdayTimes, wedsTimes, thursTimes, fridayTimes, satTimes];
 
-    for (x = 0; x <= 6; x++) {
-        // var key = keys[x];
-        // window.localStorage.setItem(key, JSON.stringify(allTimes[x]));
+    for (x = 0; x <= 6; x++) {;
 
         var currentDay = allTimes[x];
 
@@ -101,28 +87,18 @@ function StoreOpeningTimes() { // stores all opening times in JS local storage s
 }
 
 function DisplayOpeningTimes() { // displays user-stored opening times on opening times page
-    var validOpeningTimesKey = /^[A-Za-z]+$/;
-
     if (localStorage.length != 0) {
         for (var i = 0, length = localStorage.length; i < length; i++) {
             var key = localStorage.key(i);
-            var isOpeningTimesEntry = false;
+            var times = JSON.parse(localStorage[key]);
 
-            if (key.match(validOpeningTimesKey)) {
-                isOpeningTimesEntry = true;
+            if (times.open === '' && times.close === '') {
+                $('#' + key).text(key + ': ' + 'CLOSED');
             }
-
-            if (isOpeningTimesEntry) {
-                var times = JSON.parse(localStorage[key]);
-                if (times.open === '' && times.close === '') {
-                    $('#' + key).text(key + ': ' + 'CLOSED');
-                }
-                else $('#' + key).text(key + ': ' + times.open + ' - ' + times.close);
-            }
+            else $('#' + key).text(key + ': ' + times.open + ' - ' + times.close);
+            
         }
     }
-
-
 }
 
 function ClearTimesField(day) {
@@ -133,8 +109,7 @@ function ClearTimesField(day) {
 function GetDayToday() { // gets actual day of the week to display daily updated opening times
     var date = new Date();
     var todayNum = date.getDay();
-    var daysList = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    var today = daysList[todayNum];
+    var today = keys[todayNum];
 
     return today;
 }
@@ -150,6 +125,8 @@ function DisplayTodaysOpeningTimes() { // displays today's stored opening times 
         }
 
         else $('#todaysTimes').text('CLOSED.');
-    } catch (e) {}
+    } catch (e) {
+        $('#todaysTimes').text("none set.");
+    }
 
 }
