@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using management_system.Models;
 using System.IO;
+using System.Linq;
 
 namespace management_system
 {
@@ -40,22 +41,24 @@ namespace management_system
 
         public static int GetNextBookingId() // Calculates next unique consecutive booking ID to be used
         {
-            int largest = 0;
+            int nextID = 1;
+
             for (int i = 0; i < bookings.Count; i++)
             {
                 int id = bookings[i].Id;
 
-                if (id > largest) 
+                if (nextID == id)
                 {
-                    largest = id;
+                    nextID++;
                 }
             }
 
-            return largest + 1;
+            return nextID;
         }
 
         public static void AddBooking(Booking booking) // Adds a booking to the list to be written to the .csv
         {
+            bookings = bookings.OrderBy(booking => booking.Id).ToList();
             bookings.Add(booking);
         }
 
@@ -63,6 +66,7 @@ namespace management_system
         {
             newBooking.Id = GetNextBookingId();
             bookings.Add(newBooking);
+            bookings = bookings.OrderBy(booking => booking.Id).ToList();
             WriteBookings();           
         }
 

@@ -11,7 +11,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    /* overflow: hidden; */
 }
 
 .footer {
@@ -21,8 +20,7 @@ body {
     text-align: center;
     color: white;
     height: 50px;
-    line-height: 50px; /*was 60px*/
-    /* background-color: #fc8c03; */
+    line-height: 50px;
     background-color: #ff7f44;
     position: fixed;
     bottom: 0;
@@ -32,6 +30,7 @@ body {
         color: white;
         -webkit-transition: color 0.5s;
         transition: color 0.5s;
+        text-decoration: underline;
     }
 
         .footer a:hover {
@@ -56,14 +55,17 @@ h3 {
 }
 
     h3 a, #logInLink, #logInLink2, #createAccountLink {
-        /* color: rgb(228, 110, 15); */
         color: #ff7f44;
         -webkit-transition: color 0.3s;
         transition: color 0.5s;
+        text-decoration: dotted underline;
+        text-decoration-color: #ff7f44;
     }
 
         h3 a:hover, #logInLink:hover, #logInLink2:hover, #createAccountLink:hover {
-            color:rgb(255, 239, 219)
+            color: rgb(255, 239, 219);
+            text-decoration: dotted underline;
+            text-decoration-color: rgb(255, 239, 219);
         }
 
 p {
@@ -179,7 +181,6 @@ nav ul li {
 
 .site-button {
     border: none;
-    /* background-color: #fc8c03; */
     background-color: #fb7130;
     color: white;
     padding: 8px;
@@ -192,7 +193,6 @@ nav ul li {
 }
 
     .site-button:hover {
-        /* background-color: #ffb459; */
         background-color: #ff9c6d;
     }
 
@@ -272,12 +272,6 @@ select {
 
 }
 
-/* #customer-info-edit {
-    width: 100%;
-    text-align: center;
-    padding-bottom: 50px;
-} */
-
 .transparent-bg {
     background-color: rgba(22, 22, 22, 0.842);
 }
@@ -303,7 +297,6 @@ table {
 }
 
 table th {
-    /* border: 1px solid orange; */
     padding: 7px 9px;
     background-color: #ff7f44;
     color: white;
@@ -315,13 +308,8 @@ table td {
     border-bottom: 1px solid #ffc8a8;
 }
 
-/* table tr:nth-of-type(odd) {
-    background-color: #000000d7;
-} */
-
 table tr:nth-of-type(even) {
     background-color: #ffdcc7;
-    /* background-color: #6d2600; */
 }
 
 table tr:last-of-type {
@@ -367,9 +355,9 @@ label {
     width: 15%;
 }
 
-.form-radio {
+/*.form-radio {
     width: default;
-}
+}*/
 
 .small-form-input {
     width: 10%;

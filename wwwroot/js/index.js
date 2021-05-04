@@ -161,6 +161,7 @@ $(document).ready(function () {
         }
         else {
             $('#page-wrapper').load('openingtimes.html');
+            RemoveActive();
         }
     })   
 });

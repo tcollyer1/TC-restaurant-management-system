@@ -23,6 +23,8 @@ async function AddNewTable() { // Currently stores table data in JSON format to 
 
         $(".form-input").val('');
 
+        BackToTables();
+
         return true;
     }
 

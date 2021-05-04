@@ -27,6 +27,8 @@ async function LogInUser() {
             window.sessionStorage.setItem("accountType", accountType);
 
             $('#page-wrapper').load('loggedInIndex2.html', function () {
+                RemoveActive();
+                UpdateActive('#index');
                 $('#welcomeMsg').html("Welcome, " + name);
             });
 
@@ -53,6 +55,16 @@ async function LogInUser() {
 
         return false;
     }
+}
+
+function RemoveActive() {
+    var items = $('.active');
+    items.removeClass("active");
+}
+
+function UpdateActive(item) // changes active page
+{
+    $(item).addClass("active");
 }
 
 async function CreateUserAccount() {
