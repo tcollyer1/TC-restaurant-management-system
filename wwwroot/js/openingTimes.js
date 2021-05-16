@@ -67,9 +67,24 @@ function StoreOpeningTimes() {
     for (x = 0; x <= 6; x++) {;
 
         var currentDay = allTimes[x];
+        var opens = new Date();
+        var closes = new Date();
 
-        if ((currentDay.open != '' && currentDay.close == '') || (currentDay.open == '' && currentDay.close != '')) { // TODO: fix that an unfinished can be input; e.g. 12:--, with no minutes
-            alert("One or more invalid opening times. Please enter either: both an opening AND closing time, or neither to indicate that the restaurant is closed.");
+        opens.setHours(currentDay.open.split(':')[0]);
+        opens.setMinutes(currentDay.open.split(':')[1]);
+        opens.setSeconds(0);
+
+        closes.setHours(currentDay.close.split(':')[0]);
+        closes.setMinutes(currentDay.close.split(':')[1]);
+        closes.setSeconds(0);
+
+        if ((currentDay.open != '' && currentDay.close == '') || (currentDay.open == '' && currentDay.close != '')) {
+            alert("One or more incomplete opening times entered. Please enter either: both an opening AND closing time, or neither to indicate that the restaurant is closed.");
+            return false;
+        }
+
+        else if (closes <= opens) {
+            alert("One or more sets of invalid opening hours entered.");
             return false;
         }
     }

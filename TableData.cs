@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using management_system.Models;
 using System.IO;
+using System.Linq;
 
 namespace management_system
 {
@@ -30,34 +31,31 @@ namespace management_system
 
         public static List<Table> GetTables() // Returns list of all tables from tables.csv
         {
+            tables.OrderBy(table => table.TableNo);
             return tables;
         }
 
         public static int GetNextTableNo() // Calculates next unique table number available to be used
         {
-            int largest = 0;
-            for (int i = 0; i < tables.Count; i++)
-            {
-                int tableNo = tables[i].TableNo;
 
-                if (tableNo > largest) 
-                {
-                    largest = tableNo;
+            int number = 1;
+
+            for (int i = 0; i < tables.Count; i++) {
+                int currentTableNo = tables[i].TableNo;
+
+                if (number == currentTableNo) {
+                    number++;
                 }
             }
 
-            return largest + 1;
+            return number;
         }
-
-        // public static void AddTable(Table table) // Adds a table to the list to be written to the .csv
-        // {
-        //     tables.Add(table);
-        // }
 
         public static void AddTableToCsv(Table newTable) // Gets table data of new table and calls file writing function
         {
             newTable.TableNo = GetNextTableNo();
             tables.Add(newTable);
+            tables = tables.OrderBy(table => table.TableNo).ToList();
             WriteTables();           
         }
 
